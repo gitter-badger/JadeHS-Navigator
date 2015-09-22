@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.jadehs.jadehsnavigator">
+    <uses-sdk android:minSdkVersion="14" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Start gcm_permission -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- end gcm_permission -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/JHSNAVTheme" >
+        <!--android:theme="@style/Theme.AppCompat.Light.DarkActionBar"-->
+
+        <activity
+            android:name="de.jadehs.jadehsnavigator.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Einstellungen"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".StudiengangActivity"
+            android:label="Studiengang auswählen"
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- start gcm_receiver -->
+        <receiver android:name="com.google.android.gms.gcm.GcmReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="gcm.play.android.samples.com.gcmquickstart" />
+            </intent-filter>
+        </receiver>
+        <!-- end gcm_receive -->
+
+        <!-- start gcm_listener -->
+        <service android:name="de.jadehs.jadehsnavigator.service.MyGcmListenerService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <!-- end gcm_listener -->
+        <!-- start instanceid_listener -->
+        <service android:name="de.jadehs.jadehsnavigator.service.RegistrationIntentService" android:exported="false" />
+        <!-- end instanceid_listener -->
+    </application>
+</manifest>

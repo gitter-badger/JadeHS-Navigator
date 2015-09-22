@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="JHSNAVTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarTheme" tools:ignore="NewApi">@style/JHSNAVTheme.ActionBarTheme</item>
+        <item name="actionBarTheme">@style/JHSNAVTheme.ActionBarTheme</item>
+        <item name="android:actionBarStyle" tools:ignore="NewApi">@style/JHSNAVTheme.ActionBar</item>
+        <item name="actionBarStyle">@style/JHSNAVTheme.ActionBar</item>
+        <item name="drawerArrowStyle">@style/JHSNAVTheme.Drawer</item>
+        <item name="colorPrimary">@color/jadehs_white</item>
+    </style>
+
+    <style name="JHSNAVTheme.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <!-- Actionbar background color -->
+        <item name="android:background" tools:ignore="NewApi">@color/jadehs_red</item>
+        <item name="background">@color/jadehs_red</item>
+        <!-- Actionbar font color -->
+        <item name="titleTextStyle">@style/JHSNAVTheme.Title</item>
+    </style>
+
+    <style name="JHSNAVTheme.ActionBarTheme" parent="style/ThemeOverlay.AppCompat.Light">
+        <!-- Back Button -->
+        <item name="colorControlNormal">@color/jadehs_white</item>
+        <item name="android:colorControlNormal" tools:ignore="NewApi">@color/jadehs_white</item>
+    </style>
+
+    <style name="JHSNAVTheme.Title" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/jadehs_white</item>
+    </style>
+
+    <style name="JHSNAVTheme.Drawer" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/jadehs_white</item>
+    </style>
+</resources>

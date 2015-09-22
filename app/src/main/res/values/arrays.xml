@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="FB_keys">
+        <item>FB Management, Information, Technologie</item>
+        <item>FB Ingenieurwissenschaften</item>
+        <item>FB Wirtschaft (WHV) </item>
+        <item>FB Architektur</item>
+        <item>FB Bauwesen und Geoinformation</item>
+        <item>FB Seefahrt (Elsfleth)</item>
+    </string-array>
+
+    <string-array name="FB_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="RSS_keys">
+        <item>@string/origin_1</item>
+        <item>@string/origin_2</item>
+        <item>@string/origin_3</item>
+        <item>@string/origin_4</item>
+        <item>@string/origin_5</item>
+    </string-array>
+
+    <string-array name="RSS_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="default_rss">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <array name="empty_array"></array>
+
+    <string-array name="SG_keys">
+        <!-- Studiengaenge MIT -->
+        <item>Wing Master</item>
+        <item>Beginn KW 39, Montag, 21. September 2015</item>
+        <item>Master Management digitaler Medien</item>
+        <item>MIT English Courses</item>
+        <item>MWJ 1</item>
+        <item>MWJ 2</item>
+        <item>MWJ 3</item>
+        <item>MWJ 5</item>
+        <item>MWJ 6</item>
+        <item>MWJ 7</item>
+        <item>Winf 1</item>
+        <item>Winf 2</item>
+        <item>Winf 3</item>
+        <item>Winf 4</item>
+        <item>Winf 5</item>
+        <item>Wing 1</item>
+        <item>Wing 2</item>
+        <item>Wing 3</item>
+        <item>Wing 4</item>
+        <item>Wing 5</item>
+        <item>Wing 6</item>
+        <item>Wing Frauen 2</item>
+        <item>Wing Frauen 3</item>
+        <item>Wing Master</item>
+
+        <!-- Studiengaenge Ingenieurwissenschaften -->
+        <item>Meerestechnik Master: Marine Sensorik (UNI OL)</item>
+        <item>Beginn KW39 Mo 21. Sept.</item>
+        <item>Elektrotechnik 1 &amp; Kommunikations-/Informationstechnik 1</item>
+        <item>Elektrotechnik 2 &amp; Kommunikations-/Informationstechnik 2</item>
+        <item>Elektrotechnik 3 &amp; Kommunikations-/Informationstechnik 3</item>
+        <item>Elektrotechnik 4</item>
+        <item>Elektrotechnik 6</item>
+        <item>Elektrotechnik 7</item>
+        <item>Elektrotechnik Automatisierung CP30</item>
+        <item>Elektrotechnik Energie CP30</item>
+        <item>Elektrotechnik MASTER</item>
+        <item>ENGLISCH</item>
+        <item>Kommunikations- u. Informationstechnik 4</item>
+        <item>Kommunikations- u. Informationstechnik 6</item>
+        <item>Kommunikations- u. Informationstechnik 7</item>
+        <item>Kommunikations- u. Informationstechnik CP30</item>
+        <item>Maschinenbau &amp; Maschinenbau-Informatik 1A</item>
+        <item>Maschinenbau &amp; Maschinenbau-Informatik 1B</item>
+        <item>Maschinenbau &amp; Maschinenbau-Informatik 2A</item>
+        <item>Maschinenbau &amp; Maschinenbau-Informatik 3</item>
+        <item>Maschinenbau 4 Energie-, Verfahr.- u. Umweltt.</item>
+        <item>Maschinenbau 4 Entwicklung u. Konstruktion</item>
+        <item>Maschinenbau 4 Produktionstechnik</item>
+        <item>Maschinenbau 6 Energie-, Verfahr.- u. Umweltt.</item>
+        <item>Maschinenbau 6 Entwicklung u. Konstruktion</item>
+        <item>Maschinenbau 6 Produktionstechnik</item>
+        <item>Maschinenbau 7</item>
+        <item>Maschinenbau :Energie-, Verfahr.- u. Umweltt. CP30</item>
+        <item>Maschinenbau :Entwicklung u. Konstruktion CP30</item>
+        <item>Maschinenbau :Produktionstechnik CP30</item>
+        <item>Maschinenbau MASTER</item>
+        <item>Maschinenbau-Informatik 4</item>
+        <item>Maschinenbau-Informatik 6</item>
+        <item>Maschinenbau-Informatik 7</item>
+        <item>Maschinenbau-Informatik CP30</item>
+        <item>Mechatronik 1 / Mechatronik</item>
+        <item>Mechatronik 2 / Mechatronik</item>
+        <item>Mechatronik 3 / Mechatronik</item>
+        <item>Mechatronik 4 / Mechatronik</item>
+        <item>Mechatronik 6 / Mechatronik</item>
+        <item>Mechatronik 7 / Mechatronik</item>
+        <item>Mechatronik Automatisierungstechnik 1 CP30</item>
+        <item>Mechatronik Automatisierungstechnik 2 CP30</item>
+        <item>Mechatronik Gerätekonstruktion CP30</item>
+        <item>Mechatronik Mikrotechnik CP30</item>
+        <item>Medizintechnik 1</item>
+        <item>Medizintechnik 2</item>
+        <item>Medizintechnik 3</item>
+        <item>Medizintechnik 4</item>
+        <item>Medizintechnik 6</item>
+        <item>Medizintechnik 7</item>
+        <item>Medizintechnik Elektronik u. Signalverarbeitung CP30</item>
+        <item>Medizintechnik Gerätekonstruktion CP30</item>
+        <item>Medizintechnik Spezielle Gebiete der Medizintechnik CP30</item>
+        <item>Meerestechnik 1</item>
+        <item>Meerestechnik 2</item>
+        <item>Meerestechnik 3</item>
+        <item>Meerestechnik 4</item>
+        <item>Meerestechnik 6</item>
+        <item>Meerestechnik 7</item>
+        <item>Meerestechnik CP30</item>
+        <item>Meerestechnik Master: Marine Sensorik (UNI OL)</item>
+
+        <!-- Studiengaenge Wirtschaft -->
+        <item>Wirtschaft im Praxisverbund</item>
+        <item>Bachelor Tourismuswirtschaft deutsch-französisch</item>
+        <item>Englischsprachige Lehrveranstaltungen</item>
+        <item>Insurance Banking and Finance</item>
+        <item>Tourismuswirtschaft</item>
+        <item>Wirtschaft</item>
+        <item>Wirtschaft im Praxisverbund</item>
+
+        <!-- Studiengaenge Bauwesen u. Geoinformation -->
+        <item>PH3</item>
+        <item>AG 1</item>
+        <item>AG 3</item>
+        <item>AG 3 (Wahl)</item>
+        <item>AG 5</item>
+        <item>AT 1</item>
+        <item>AT 3</item>
+        <item>AT 5</item>
+        <item>Bau SS BM/ECEM Gr. I/II</item>
+        <item>Bau SS ESE Gr. I/II</item>
+        <item>Bau SS Gr III/Wahlfach (Entwurf)</item>
+        <item>Bau SS Konstr. Gr. I/II</item>
+        <item>Bau SS Verkehr Gr. I/II</item>
+        <item>Bau SS W+U Gr. I/II</item>
+        <item>Bau WS 1a</item>
+        <item>Bau WS 1b</item>
+        <item>Bau WS 1c</item>
+        <item>Bau WS 2</item>
+        <item>Bau WS 3a</item>
+        <item>Bau WS 3b</item>
+        <item>Bau WS 3c</item>
+        <item>Bau WS 4</item>
+        <item>Bau WS BM/ECEM Gr. I/II</item>
+        <item>Bau WS ESE</item>
+        <item>Bau WS Gr. III/Wahlfach</item>
+        <item>Bau WS Konstr.Gr I/II</item>
+        <item>Bau WS Verkehr Gr. I/II</item>
+        <item>Bau WS W+U Gr. I/II</item>
+        <item>BWI 1 (WS)</item>
+        <item>BWI 3 (WS)</item>
+        <item>BWI 5 (WS)</item>
+        <item>Geo 1</item>
+        <item>Geo 3</item>
+        <item>Geo 3 (Wahl)</item>
+        <item>Geo 5</item>
+        <item>Geo 5 (Wahl)</item>
+        <item>GG 2</item>
+        <item>GWI 1</item>
+        <item>GWI 3</item>
+        <item>GWI 3 (Wahl)</item>
+        <item>GWI 5</item>
+        <item>GWI 5 (Wahl)</item>
+        <item>H + A 1</item>
+        <item>H + A 3</item>
+        <item>H + A 5</item>
+        <item>M+E SS Man. + Infra</item>
+        <item>M+E SS Man. + KIB</item>
+        <item>M+E WS Man. + Infra</item>
+        <item>M+E WS Man. + KIB</item>
+        <item>PH1</item>
+        <item>PH3</item>
+
+    </string-array>
+
+    <string-array name="SG_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+        <item>60</item>
+        <item>61</item>
+        <item>62</item>
+        <item>63</item>
+        <item>64</item>
+        <item>65</item>
+        <item>66</item>
+        <item>67</item>
+        <item>68</item>
+        <item>69</item>
+        <item>70</item>
+        <item>71</item>
+        <item>72</item>
+        <item>73</item>
+        <item>74</item>
+        <item>75</item>
+        <item>76</item>
+        <item>77</item>
+        <item>78</item>
+        <item>79</item>
+        <item>80</item>
+        <item>81</item>
+        <item>82</item>
+        <item>83</item>
+        <item>84</item>
+        <item>85</item>
+        <item>86</item>
+        <item>87</item>
+        <item>88</item>
+        <item>89</item>
+        <item>90</item>
+        <item>91</item>
+        <item>92</item>
+        <item>93</item>
+        <item>94</item>
+        <item>95</item>
+        <item>96</item>
+        <item>96</item>
+        <item>97</item>
+        <item>98</item>
+        <item>99</item>
+        <item>100</item>
+        <item>101</item>
+        <item>102</item>
+        <item>103</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+        <item>107</item>
+        <item>108</item>
+        <item>109</item>
+        <item>110</item>
+        <item>111</item>
+        <item>112</item>
+        <item>113</item>
+        <item>114</item>
+        <item>115</item>
+        <item>116</item>
+        <item>117</item>
+        <item>118</item>
+        <item>119</item>
+        <item>120</item>
+        <item>121</item>
+        <item>122</item>
+        <item>123</item>
+        <item>124</item>
+        <item>125</item>
+        <item>126</item>
+        <item>127</item>
+        <item>128</item>
+        <item>129</item>
+        <item>130</item>
+        <item>131</item>
+        <item>132</item>
+        <item>133</item>
+        <item>134</item>
+        <item>135</item>
+        <item>136</item>
+        <item>137</item>
+        <item>138</item>
+        <item>139</item>
+        <item>140</item>
+        <item>141</item>
+        <item>142</item>
+        <item>143</item>
+        <item>144</item>
+        <item>145</item>
+        <item>146</item>
+        <item>147</item>
+    </string-array>
+</resources>

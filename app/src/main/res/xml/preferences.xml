@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/primary_options">
+        <ListPreference
+            android:summary="@string/choose_fb"
+            android:title="Fachbereich"
+            android:key="FBPreference_list"
+            android:entries="@array/FB_keys"
+            android:entryValues="@array/FB_values"
+            android:defaultValue="@string/default_fb" />
+
+        <Preference
+            android:title="Studiengang"
+            android:summary="@string/choose_sg"
+            android:key="studiengang_wahl" />
+    </PreferenceCategory>
+<!--
+    <PreferenceCategory android:title="RSS Feeds">
+            <MultiSelectListPreference
+                android:dialogTitle="Wähle deine RSS Feeds"
+                android:entries="@array/RSS_keys"
+                android:entryValues="@array/RSS_values"
+                android:key="RSSPreference_multi"
+                android:summary="Auswahl treffen"
+                android:defaultValue="@array/default_rss" />
+    </PreferenceCategory>
+-->
+    <PreferenceCategory android:title="@string/more_options">
+        <Preference
+            android:title="@string/reset_app"
+            android:summary="@string/reset_app_summary"
+            android:key="reset"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Infos">
+        <Preference
+            android:title="@string/send_feedback"
+            android:key="feedback"/>
+        <Preference
+            android:title="@string/rate_app"
+            android:key="rate"/>
+        <Preference
+            android:title="@string/licenses"
+            android:key="licenses"/>
+        <Preference
+            android:title=""
+            android:key="version"/>
+    </PreferenceCategory>
+</PreferenceScreen>

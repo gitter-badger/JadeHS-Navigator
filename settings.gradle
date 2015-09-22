@@ -1,0 +1,2 @@
+include ':app', ':ImageViewZoom'
+project(':ImageViewZoom').projectDir = new File('library/ImageViewZoom')

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-5c869efd584f7f31f1f64a1c23399180fce394e9.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-3f76b46e84f4df89a7c4fcca3085dc007279a915.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\internal_impl-22.2.0-271a63051c5d83ed6d121036b13efec2909681b5.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-dbc637d447b37765248bff4afba908177dade098.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-20261fe272cdc2fd94748e3eb844a255505b42c6.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-f04310b485e08d201e2efb9bb6f533be69e5d10f.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-bf40c61905148a03ca7ce08cd9bc4e27ff5749f2.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2e24e5f1b11170163028277de63f709e42525db4">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-acdf9a7a4839dd7e374378aff168177b1692b0aa.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-46b24a715eff7e93b491fc7f715acac75f5140e0.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\it.sephiroth.android.library.imagezoom\imagezoom\2.2.2\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0ae6b077aa2e6de9fa3e754e5d55a5efcb43db52">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-5c94ca78b844f25b5f7448d083d426ddd61d7358.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-fcc322224151322155b285c8ccc9e6f3930271b7.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\internal_impl-22.2.0-7d3e0bb9059f666628dd7b00db6b90d20fa304df.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-e011ec823f567b3f1536cf800bf09cc184246235.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-c4f3b204b3b2480344614aef0e5e63fc0c609c62.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\libs\jsoup-1.8.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="580e4dd2a6125cc4037450b40623ac6a552c11df">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\jsoup-1.8.2-d0784dd8c014793f6127113d070cac7b2ac95ae2.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-fd47d1ade7d8ede75720097522a4a343e230feb5.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-78e5b4f23cdb44f45fa65a5341fd8684e100b67e.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-de19ca9b78c8bbe5ad14ee8c61e0613458566275.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-e0b7799ea726e0d90e353c2a89f0d81c7a283311.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-6ab7246769caf59e376f3f3104c10a825f43b1bf.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-3a61f3f6c03e91ff0f216082ff2160dbc36dbcf0.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\Documents\Dev\AndroidSDK\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\support-annotations-22.2.0-c90f86a51924822a935fcfbfa0ad3ddb8ec9631a.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-4fe46445daa0ec6bd3c096ee8afc08b80f287da8.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-ee8faa380777a292f3d8abf1d2ec5b9bef5bc8f6.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-0f8d9ef262754826eae36602c337258081b165b9.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-9ea61542d760ff278653c9863d55a3875bb062cc.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-bb495ed43ebc9c1049c652d33d4f9e268800d46b.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-2dd4cf1f520d4450447d7d9289efa7fe427fedac.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\classes-8530847d8286ee1b643e10f10c89204822fb49dd.jar" />
+    </item>
+    <item
+        jar="C:\Users\re1015\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\re1015\AndroidstudioProjects\JadeHSNavigatorUpdate\app\build\intermediates\pre-dexed\release\library-2.4.0-9bddf0e6c928ad7e7a4c9e784d98fb173a9dbed8.jar" />
+    </item>
+
+</items>

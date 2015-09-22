@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="list_item_title">#fff</color>
+    <!--<color name="list_background">#303030</color>-->
+    <!--<color name="list_background_pressed">#992416</color>-->
+    <color name="list_background">@color/jadehs_grey</color>
+    <color name="list_background_pressed">@color/jadehs_red</color>
+    <color name="list_divider">@color/jadehs_grey_muffled</color>
+
+
+    <color name="jadehs_red">#C31924</color>
+    <color name="jadehs_grey">#5B5F57</color>
+    <color name="jadehs_grey_muffled">#FF808080</color>
+    <color name="jadehs_orange">#D17558</color>
+    <color name="jadehs_white">#e8e8e8</color>
+
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+
+    <color name="swipe_color_1">#8c000e</color>
+    <color name="swipe_color_2">#12cc01</color>
+    <color name="swipe_color_3">#0010bd</color>
+    <color name="swipe_color_4">#7CAF00</color>
+</resources>

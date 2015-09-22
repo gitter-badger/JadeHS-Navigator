@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="version">0.0.1</string>
+
+    <string name="app_name">JadeHS-Navigator</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="bez_WHV">Wilhelmshaven</string>
+    <string name="bez_ELS">Elsfleth</string>
+    <string name="bez_OLB">Oldenburg</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_refresh">Aktualisieren</string>
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>HOME</item>
+        <item>NEUIGKEITEN</item>
+        <item>INFOSYS</item>
+        <item>VORLESUNGEN</item>
+        <item>MENSAPLAN</item>
+        <item>LAGEPLAN</item>
+        <item>ÜBER DIE APP</item>
+        <item>EINSTELLUNGEN</item>
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home_white_24dp</item>
+        <item>@drawable/ic_tap_and_play_white_24dp</item>
+        <item>@drawable/ic_today_white_24dp</item>
+        <item>@drawable/ic_school_white_24dp</item>
+        <item>@drawable/ic_local_dining_white_24dp</item>
+        <item>@drawable/ic_location_on_white_24dp</item>
+        <item>@drawable/ic_live_help_white_24dp</item>
+        <item>@drawable/ic_settings_white_24dp</item>
+    </array>
+
+
+    <string name="vegan">:vegan</string>
+    <string name="about_text">
+         <![CDATA[
+            Diese App ist ein studentisches Projekt und basiert auf einer Bachelorarbeit aus dem Fachbereich Ingenieurwissenschaften/Labor KNÜT.<br /><br />
+            Die Gestaltung und Entwicklung der App wurde von René Spengel, Hendrik Kremer und Nicole Eilts unter der Leitung von Rico Meiner übernommen.<br /><br />
+            <h3>Impressum</h3>
+            Jade Hochschule<br />
+            Friedrich-Paffrath-Straße 101, 26389 Wilhelmshaven<br />
+            Telefon: 04421-985-0, Telefax: 04421-985-2304<br />
+            E-Mail: <a href="mailto:info‎@‎jade-hs.de">info@jade-hs.de</a>, Internet: <a href="http://www.jade-hs.de">www.jade-hs.de</a><br /><br />
+            <b>Herausgeber:</b><a href="http://team.jade-hs.de/kontakt/index.php?id=634">Der Präsident</a>(V.i.S.d.P)<br /><br />
+            <b>Verantwortliche Entwickler, Gestaltung und Programmierung:</b> René Spengel, Hendrik Kremer, Nicole Eilts<br /><br />
+            Die Jade Hochschule Wilhelmshaven/Oldenburg/Elsfleth ist eine Körperschaft des öffentlichen Rechts. Sie wird durch den Präsidenten gesetzlich vertreten. <br /><br />
+            <b>Zuständige Aufsichtsbehörde:</b>Niedersächsisches Ministerium für Wissenschaft und Kultur, Leibnizufer 9, 30169 Hannover<br /><br />
+            <b>Umsatzsteuer-Identifikationsnummer:</b> gemäß § 27 a Umsatzsteuergesetz: DE 265902596<br /><br />
+            <b>Inhalt des Onlineangebotes:</b>Die Jade Hochschule Wilhelmshaven/Oldenburg/Elsfleth (im Folgenden "der Autor" genannt) übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen den Autor, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden sind grundsätzlich ausgeschlossen, sofern seitens des Autors kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt. Alle Angebote sind freibleibend und unverbindlich. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.<br /><br />
+            <b>Haftungshinweis: Verweise und Links:</b> Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich. Das gilt auch für persönliche Homepages von Hochschulangehörigen.<br /><br />
+            <b>Urheber- und Kennzeichenrecht:</b> Die Inhalte sind urheberrechtlich geschützt. Jede Verwertung, Veröffentlichung oder Veränderung bedarf der schriftlichen Zustimmung des Urhebers bzw. des Rechteinhabers. Die Urheberrechte der dargestellten Inhalte und Elemente verteilen sich wie folgt:<br/>
+            <br />
+            Lageplan – <a href="https://creativecommons.org/licenses/by/3.0/de/">CC BY 3.0 DE</a> Fabian Kaiser<br />
+            Inhalte des Mensaplans – Studentenwerk Oldenburg<br />
+            Video2brain RSS Feed – video2brain GmbH<br />
+            Bibliothek RSS Feed – Jade Hochschule<br />
+            Jade Impuls RSS Feed – Jade Hochschule
+            <br /><br />
+            Die App steht unter der GNU General Public License v3.0 siehe <b>Einstellungen > Lizenzen.</b><br /><br />
+	    ]]>
+    </string>
+
+    <string name="license_text">
+        <![CDATA[
+            <b>JadeHS-Navigator</b><br /><br />
+            Copyright (C) 2015 JadeHS-Navigator Team<br /><br />
+            This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br /><br />
+            This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br /><br />
+            <a href="http://choosealicense.com/licenses/gpl-3.0/">Full License</a><br /><br />
+            <b>jsoup</b><br>
+            Copyright 2009-2015 Jonathan Hedley<br /><br />
+            The MIT License (MIT)<br /><br />
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br /><br />
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br /><br />
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br / ><br />
+            <a href="http://jsoup.org/">http://jsoup.org/</a><br /><br />
+            <b>ImageViewZoom</b><br />
+            Copyright 2015 Alessandro Crugnola<br /><br />
+            The MIT License (MIT)<br /><br />
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br /><br />
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br /><br />
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br / ><br />
+            <a href="https://github.com/sephiroth74/ImageViewZoom">https://github.com/sephiroth74/ImageViewZoom</a><br /><br />
+            <b>SlidingTabsBasic</b><br>
+            Copyright 2013 The Android Open Source Project<br /><br />
+            Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+            You may obtain a copy of the License at<br /><br />
+            <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a><br /><br />
+            Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.<br /><br />
+        ]]>
+    </string>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <!-- Preferences -->
+
+    <string name="primary_options">Studienauswahl</string>
+    <string name="more_options">Weitere Optionen</string>
+
+    <string name="choose_fb">Wähle Deinen Fachbereich</string>
+    <string name="choose_sg">Wähle Deinen Studiengang</string>
+
+    <string name="preference_reset">Soll die App zurückgesetzt werden?</string>
+    <string name="preferences_deleted">App wurde zurückgesetzt</string>
+
+    <string name="default_fb">1</string>
+
+    <string name="email_recipient">rene.spengel@jade-hs.de</string>
+    <string name="email_subject">Feedback zum JadeHS-Navigator</string>
+
+    <string name="licenses">Lizenzen</string>
+
+    <string name="send_feedback">Feedback senden</string>
+    <string name="rate_app">App bewerten</string>
+    <string name="reset_app">App zurücksetzen</string>
+    <string name="reset_app_summary">Alle Einstellungen und Datensätze löschen</string>
+
+    <!--- InfoSys Strings -->
+    <string name="infosys_base_url">http://team.jade-hs.de/plan/index.php?action=rss&amp;fb=</string>
+
+    <string name="infosys_url_MIT">%23SPLUS698158</string>
+    <string name="infosys_url_I">%23SPLUS698157</string>
+    <string name="infosys_url_W">%23SPLUS69815A</string>
+    <string name="infosys_url_A">%23SPLUS698153</string>
+    <string name="infosys_url_BUA">%23SPLUS698154</string>
+    <string name="infosys_url_S">%23SPLUSB6A7F0</string>
+
+    <!-- Origins -->
+    <string name="origin_1">Jade HS</string>
+    <string name="origin_2">Studentenwerk</string>
+    <string name="origin_3">Bibliothek</string>
+    <string name="origin_4">Jade Impuls</string>
+    <string name="origin_5">Video2Brain</string>
+
+    <string name="origin_1_id">1</string>
+    <string name="origin_2_id">2</string>
+    <string name="origin_3_id">3</string>
+    <string name="origin_4_id">4</string>
+    <string name="origin_5_id">5</string>
+
+    <!-- Dialog -->
+    <string name="dialog_open_website">Webseite in Deinem Browser öffnen?</string>
+
+    <string name="positive">Ja</string>
+    <string name="negative">Nein</string>
+    <string name="ok">OK</string>
+    <string name="negative_default">Nein, übernehme Standardeinstellungen</string>
+
+    <string name="alert_firsttimesetup">Willkommen zum JadeHS-Navigator. Da dies Dein erster Start der App ist, solltest Du ein paar Einstellungen vornehmen, ansonsten werden Standardeinstellungen ausgewählt</string>
+
+    <string name="failed_to_open_website">Website konnte nicht geöffnet werden</string>
+
+    <string name="please_wait">Bitte warten</string>
+
+    <!-- VPLAN -->
+    <string name="strBtnMonday">Mo</string>
+    <string name="strBtnTuesday">Di</string>
+    <string name="strBtnWednesday">Mi</string>
+    <string name="strBtnThursday">Do</string>
+    <string name="strBtnFriday">Fr</string>
+    <string name="strVPlanBaseURL"><![CDATA[http://team.jade-hs.de/plan/plan.php?action=ipc_schedule&version=1.0&department=]]></string>
+    <string name="strWeekdayMonday">MO</string>
+    <string name="strWeekdayTuesday">DI</string>
+    <string name="strWeekdayWednesday">MI</string>
+    <string name="strWeekdayThursday">DO</string>
+    <string name="strWeekdayFriday">FR</string>
+    <string name="strWeekdaySaturday">SA</string>
+    <string name="str_empty_vplan">Es konnten keine Vorlesungen gefunden werden, bitte aktualisiere den Vorlesungsplan.</string>
+
+    <!-- MENSA -->
+    <string name="titleHauptgericht">Hauptgerichte</string>
+    <string name="titleBeilage">Beilagen</string>
+    <string name="titleZusatzessen">Zusatzessen</string>
+    <string name="titleSuppe">Suppen</string>
+    <string name="titleGemuese">Gemüse</string>
+    <string name="titleSalate">Salate</string>
+    <string name="titleDesserts">Desserts</string>
+    <string name="action_changeWeek">Nächste Woche</string>
+    <string name="mensaplan_info">i</string>
+    <string name="mensaplan_base_url">http://www.studentenwerk-oldenburg.de/de/gastronomie/speiseplaene/</string>
+    <string name="mensaplan_url_whv">mensa-wilhelmshaven.html</string>
+    <string name="mensaplan_url_els">mensa-elsfleth.html</string>
+    <string name="mensaplan_url_olb">mensa-ofener-strasse.html</string>
+
+    <string-array name="mensaplan_additivies">
+        <item><b>Symbole</b></item>
+        <item>lamm#: Lammfleisch</item>
+        <item>gefluegel#: Geflügel</item>
+        <item>vegan#: vegan</item>
+        <item>rind# oder 34: Rindfleisch Neuland</item>
+        <item>schwein# oder 35: Schweinefleisch Neuland</item>
+        <item>vegetarisch# oder 33: vegetarisch</item>
+        <item> </item>
+        <item><b>Zusatzstoffe</b></item>
+        <item>1. mit Farbstoff</item>
+        <item>2. mit Konservierungsstoffen</item>
+        <item>3. mit Antioxidationsmittel</item>
+        <item>4. mit Geschmacksverstärker</item>
+        <item>5. geschwefelt</item>
+        <item>6. geschwärzt</item>
+        <item>7. gewachst</item>
+        <item>8. mit Süßungsmittel</item>
+        <item>9. enthält Phenylalaninquelle</item>
+        <item>10. mit Phosphat</item>
+        <item>11. koffeinhaltig</item>
+        <item>12. kakaohaltige Fettglasur</item>
+        <item> </item>
+        <item><b>Allergene</b></item>
+        <item>A: mit Alkohol</item>
+        <item>Ei: Eier</item>
+        <item>En: Erdnuss</item>
+        <item>Fi: Fisch</item>
+        <item>Gl: glutenhaltiges Getreide</item>
+        <item>Kr: Krebstiere</item>
+        <item>La: Milch und Laktose</item>
+        <item>Lu: Lupine</item>
+        <item>Nu: Schalenfrüchte (Nüsse)</item>
+        <item>Se: Sesam</item>
+        <item>Sf: Senf</item>
+        <item>Sl: Sellerie</item>
+        <item>So: Soja</item>
+        <item>Sw: Schwefeldioxid und Sulfite</item>
+        <item>Wt: Weichtiere</item>
+
+    </string-array>
+    <string name="mensaplan_btn_changeweek"></string>
+    <string name="mensaplan_zusatzstoffe_title">Kennzeichnungen</string>
+    <string name="mensaplan_zusatzstoffe_positivebutton">OK</string>
+    <string name="mensaplan_belehrung_title">Wichtiger Hinweis</string>
+    <string name="mensaplan_belehrung">Die Mensa in %1$s wird vom Studentenwerk Oldenburg betrieben und ist kein Teil der Jade Hochschule.
+        Die Informationen stammen von der Website des Studentenwerkes.
+        Die dargestellten Preise gelten für Studenten.
+        Für die Richtigkeit der Information besteht keine Gewähr.</string>
+    <string name="mensaplan_belehrung_positivebutton">Verstanden</string>
+
+    <!-- Error Messages -->
+    <string name="err_noConnection">Keine Internetverbindung vorhanden!</string>
+    <string name="err_noMeals">Keine Gerichte vorhanden!</string>
+
+    <!-- extern titles -->
+    <string name="txtHomepage">jade-hs.de</string>
+    <string name="txtMoodle">Moodle</string>
+    <string name="txtECampus">eCampus</string>
+    <string name="txtOWA">Webmail</string>
+    <string name="txtGuide">Studienplaner</string>
+    <string name="txtOwncloud">Owncloud</string>
+
+    <!-- extern urls -->
+    <string name="extHomepage">https://www.jade-hs.de</string>
+    <string name="extMoodle">https://moodle.jade-hs.de/moodle/login/index.php</string>
+    <string name="extECampus">https://ecampus.jade-hs.de/qisserver/pages/cs/sys/portal/hisinoneStartPage.faces?chco=y</string>
+    <string name="extOWA">https://webmail.jade-hs.de/</string>
+    <string name="extGuide">http://moodle.jade-hs.de/moodle/mod/wiki/view.php?pageid=1383</string>
+    <string name="extOwncloud">https://owncloud.jade-hs.de/</string>
+</resources>

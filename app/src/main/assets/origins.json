@@ -1,0 +1,9 @@
+{
+ "origins" : [
+   {"id":1, "title":"Jade HS", "url":"http://www.jade-hs.de/?id=14&type=100&tx_ttnews"},
+   {"id":2, "title":"Studentenwerk", "url": "http://www.studentenwerk-oldenburg.de/de/allgemeines/aktuelles.feed?type=rss"},
+   {"id":3, "title":"Bibliothek", "url":"http://www.jade-hs.de/?id=7218&type=100&tx_ttnews"},
+   {"id":4, "title":"Jade Impuls", "url":"http://jade-impuls.projekt.jade-hs.de/feed/"},
+   {"id":5, "title":"Video2Brain", "url":"http://www.video2brain.com/de/rss-trainings.xml"}
+ ]
+}

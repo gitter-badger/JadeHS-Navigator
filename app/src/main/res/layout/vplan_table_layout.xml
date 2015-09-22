@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="08:15"
+            android:padding="3dip" />
+
+        <ListView
+            android:layout_column="2"
+            android:id="@+id/list_vplan"
+            android:layout_width="fill_parent"
+            android:layout_height="500dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:dividerHeight="1dp" />
+        <!--
+                <TextView
+                    android:id="@+id/veranstaltung"
+                    android:layout_column="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dip"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:hint="Veranstaltung"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/startVorlesung"
+                    android:layout_toEndOf="@+id/startVorlesung" />-->
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="09:45"
+            android:padding="3dip" />
+
+
+        <!--<TextView
+            android:id="@+id/dozent"
+            android:layout_column="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:hint="Dozent"
+            android:layout_below="@+id/veranstaltung"
+            android:layout_toRightOf="@+id/endeVorlesung"
+            android:layout_toEndOf="@+id/endeVorlesung" />
+
+        <TextView
+            android:id="@+id/raum"
+            android:layout_column="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:hint="Raum"
+            android:layout_alignTop="@+id/dozent"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp" />-->
+    </TableRow>
+
+</TableLayout>

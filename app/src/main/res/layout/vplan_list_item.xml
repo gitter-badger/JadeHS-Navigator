@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/startVorlesung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:padding="2dip"
+        android:textSize="@dimen/infosys_footer"
+        android:textColor="@android:color/black"
+        android:hint="Start"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:id="@+id/endeVorlesung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dip"
+        android:textSize="@dimen/infosys_footer"
+        android:textColor="@android:color/black"
+        android:hint="Ende"
+        android:layout_below="@+id/startVorlesung"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:id="@+id/veranstaltung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/header_size"
+        android:textColor="@android:color/black"
+        android:hint="Veranstaltung"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/startVorlesung"
+        android:layout_toEndOf="@+id/startVorlesung" />
+
+    <TextView
+        android:id="@+id/dozent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@android:color/black"
+        android:hint="Dozent"
+        android:layout_below="@+id/veranstaltung"
+        android:layout_toRightOf="@+id/endeVorlesung"
+        android:layout_toEndOf="@+id/endeVorlesung" />
+
+    <TextView
+        android:id="@+id/raum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@android:color/black"
+        android:hint="Raum"
+        android:layout_alignTop="@+id/dozent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp" />
+
+</RelativeLayout>
