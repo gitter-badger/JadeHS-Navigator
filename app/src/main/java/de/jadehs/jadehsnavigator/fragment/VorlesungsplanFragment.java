@@ -88,25 +88,29 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        try {
+            super.onViewCreated(view, savedInstanceState);
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("JHSNAV_PREFS", Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("JHSNAV_PREFS", Context.MODE_PRIVATE);
 
-        this.studiengangID = sharedPreferences.getString("StudiengangID", "");
+            this.studiengangID = sharedPreferences.getString("StudiengangID", "");
 
-        Log.i("STUDIENGANG", studiengangID);
+            Log.i("STUDIENGANG", studiengangID);
 
-        if (studiengangID.startsWith("%")) {
-            //this.weekOfYear = new SimpleDateFormat("w").format(new java.util.Date()).toString();
-            //this.weekOfYear = calendarHelper.getWeekNumber();
-            setCurrentWeekNumber();
-            // LADE AKTUELLEN VPLAN
-            updateVPlan();
-            //getVPlanFromDB();
-        }else{
-            Toast.makeText(getActivity().getApplicationContext(), "Bitte wähle einen Studiengang in den Einstellungen aus!", Toast.LENGTH_LONG).show();
-            // zeige fehler overlay
-            getActivity().findViewById(R.id.errorOverlay).setVisibility(View.VISIBLE);
+            if (studiengangID.startsWith("%")) {
+                //this.weekOfYear = new SimpleDateFormat("w").format(new java.util.Date()).toString();
+                //this.weekOfYear = calendarHelper.getWeekNumber();
+                setCurrentWeekNumber();
+                // LADE AKTUELLEN VPLAN
+                updateVPlan();
+                //getVPlanFromDB();
+            } else {
+                Toast.makeText(getActivity().getApplicationContext(), "Bitte wähle einen Studiengang in den Einstellungen aus!", Toast.LENGTH_LONG).show();
+                // zeige fehler overlay
+                getActivity().findViewById(R.id.errorOverlay).setVisibility(View.VISIBLE);
+            }
+        }catch (Exception ex){
+            Log.wtf("VPlan", "Err", ex);
         }
     }
 
@@ -165,22 +169,26 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
     }
 
     public void updateVPlan() {
+        try {
 
-        this.connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        this.activeNetwork = connectivityManager.getActiveNetworkInfo();
-        this.preferences = new Preferences(getActivity().getApplicationContext());
+            this.connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+            this.activeNetwork = connectivityManager.getActiveNetworkInfo();
+            this.preferences = new Preferences(getActivity().getApplicationContext());
 
-        url = this.preferences.getVPlanURL() + studiengangID + "&weeks=" + weekOfYear + "&days=";
+            url = this.preferences.getVPlanURL() + studiengangID + "&weeks=" + weekOfYear + "&days=";
 
-        boolean isConnected = (activeNetwork != null) && activeNetwork.isConnectedOrConnecting();
+            boolean isConnected = (activeNetwork != null) && activeNetwork.isConnectedOrConnecting();
 
-        if(isConnected) {
-            this.vPlanTask = new ParseVPlanTask(getActivity(), this.url, this.preferences.getFB());
-            this.vPlanTask.delegate = this;
-            this.vPlanTask.execute();
-        } else {
-            Toast.makeText(getActivity().getApplicationContext(), "Aktualisierung fehlgeschlagen, bitte eine Internetverbindung herstellen.", Toast.LENGTH_LONG).show();
-            getVPlanFromDB();
+            if (isConnected) {
+                this.vPlanTask = new ParseVPlanTask(getActivity(), this.url, this.preferences.getFB());
+                this.vPlanTask.delegate = this;
+                this.vPlanTask.execute();
+            } else {
+                Toast.makeText(getActivity().getApplicationContext(), "Aktualisierung fehlgeschlagen, bitte eine Internetverbindung herstellen.", Toast.LENGTH_LONG).show();
+                getVPlanFromDB();
+            }
+        }catch (Exception ex){
+            Log.wtf("VPlan", "Err",ex);
         }
     }
 
@@ -255,7 +263,7 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
     public void setCurrentWeekNumber(int which) {
         //this.weekOfYear = new SimpleDateFormat("w").format(new java.util.Date()).toString();
         this.weekOfYear = ""+which;
-        Log.wtf("weekOfYear",this.weekOfYear);
+        Log.wtf("weekOfYear", this.weekOfYear);
     }
 
     public String getWeekOfYear() {

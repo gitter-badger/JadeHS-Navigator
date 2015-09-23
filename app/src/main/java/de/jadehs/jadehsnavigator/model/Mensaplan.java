@@ -1,19 +1,3 @@
-/**
- * This file is part of JadeHS-Navigator.
- *
- * JadeHS-Navigator is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
-
- * JadeHS-Navigator is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
-
- * You should have received a copy of the GNU General Public License
- * along with JadeHS-Navigator.  If not, see <http://www.gnu.org/licenses/>.
- */
 package de.jadehs.jadehsnavigator.model;
 
 import android.content.Context;
@@ -47,7 +31,6 @@ public class Mensaplan  {
     private long insertID;
 
     private Elements tableRows;
-    private Elements mealTypes;
     private Elements mealsDay;
     private Elements icons;
     private Element meal;
@@ -68,6 +51,9 @@ public class Mensaplan  {
     private Pattern pattern;
     private Matcher matcher;
     private String TAG = "Mensaplan";
+
+
+
 
     public Mensaplan(Context context) {
             this.context=context;
@@ -141,16 +127,23 @@ public class Mensaplan  {
                     // Iteration der Tage
                     for (int j = 0; j <= 5; j++) {
                         if(j==0) {
-                            priceText=mealTypes.select("td:eq(0)").text();
+                            //TODO Price parsen
+                            priceText= tableRows.select("td:eq(0)").text();
                             pattern = Pattern.compile("([\\d]+,[\\d]+)");
                             matcher = pattern.matcher(priceText);
-                            if(matcher.find()){
+                            if(matcher.find())
+                            {
                                  priceText = matcher.group(1)+"€";
-                            }else{
-                                 priceText = "";
+                            } else {
+                                priceText = "";
                             }
+
+
+
+
                         } else {
-                            mealsDay = mealTypes.select("td:eq(" + j + ") .speise_eintrag");
+                            mealsDay = tableRows.select("td:eq(" + j + ") .speise_eintrag");
+
                             // Iteration eines TDs/Divs
                             int breakPoint=0;
                             if(mealsDay.size()==2) {
@@ -164,7 +157,6 @@ public class Mensaplan  {
                                 //Log.wtf(TAG,mealsDay.get(iter).html());
                                 if(mealsDay.size() != 0) {
                                     meal = mealsDay.get(iter);
-
                                     mealText = meal.text();
                                     icons = meal.select("img[title]");
 
@@ -184,7 +176,6 @@ public class Mensaplan  {
                                 } else {
                                     //Log.wtf(TAG, "Keinen Eintrag für diesen Tag vorhanden, Obejkt mit der bezeichnung: "+ mealText+ " wurde erstellt.");
                                     mensaplanMeal = new MensaplanMeal(mealText, i);
-                                    //Log.wtf("MensaplanMeal","Item Created:"+mealText +" "+ i);
                                 }
                                 Log.wtf(TAG, " Woche: "+ it + " Anzahl TDs: " +mealsDay.size() + " TableRow: "+ i + " Beschreibung: "+ mealText);
 
