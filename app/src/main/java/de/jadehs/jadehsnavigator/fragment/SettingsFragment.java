@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -155,14 +156,26 @@ public class SettingsFragment extends PreferenceFragment {
             feedback.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.feedbackURL))));
 
-                    intent.setType("plain/text");
-                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.email_recipient)});
-                    intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
+                    return true;
+                }
+            });
 
-                    startActivity(intent);
+            /**
+             * Rate button
+             */
+            final Preference rate = findPreference("rate");
 
+            rate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    final String packageName = getActivity().getPackageName();
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+                    } catch (Exception ex){
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+                    }
                     return true;
                 }
             });
