@@ -50,6 +50,7 @@ import de.jadehs.jadehsnavigator.util.Preferences;
 import de.jadehs.jadehsnavigator.view.VPlanTabLayout;
 
 public class VorlesungsplanFragment extends Fragment implements VPlanAsyncResponse {
+    private final String TAG = "VorlesungsplanFragment";
 
     private ConnectivityManager connectivityManager;
     private NetworkInfo activeNetwork;
@@ -230,7 +231,7 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
     @Override
     public void processFinished(ArrayList<VPlanItem> vPlanItems) {
         Log.wtf("ASYNC", "ASYNC TASK FINISHED");
-        try{
+        try {
             VPlanPagerAdapter vPlanPagerAdapter = new VPlanPagerAdapter(getActivity(), vPlanItems, weekOfYear);
             viewpager = (ViewPager) getActivity().findViewById(R.id.vplan_viewpager);
             /**
@@ -241,17 +242,18 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
 
             vPlanTabLayout = (VPlanTabLayout) getActivity().findViewById(R.id.vplan_sliding_tabs);
             vPlanTabLayout.setmViewPager(viewpager);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+
+
+            getActivity().findViewById(R.id.progressVPlan).setVisibility(View.GONE);
+            getActivity().findViewById(R.id.vplan_semester).setVisibility(View.GONE);
+
+            if (!vPlanItems.isEmpty())
+                getActivity().findViewById(R.id.empty_vplan).setVisibility(View.GONE);
+            else
+                getActivity().findViewById(R.id.empty_vplan).setVisibility(View.VISIBLE);
+        }catch (Exception ex) {
+            Log.wtf(TAG, "Err", ex);
         }
-
-        getActivity().findViewById(R.id.progressVPlan).setVisibility(View.GONE);
-        getActivity().findViewById(R.id.vplan_semester).setVisibility(View.GONE);
-
-        if (!vPlanItems.isEmpty())
-            getActivity().findViewById(R.id.empty_vplan).setVisibility(View.GONE);
-        else
-            getActivity().findViewById(R.id.empty_vplan).setVisibility(View.VISIBLE);
     }
 
     public void setCurrentWeekNumber() {

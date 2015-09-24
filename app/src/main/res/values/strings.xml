@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">0.2</string>
+    <string name="version">0.3</string>
 
     <string name="app_name">JadeHS-Navigator</string>
 
@@ -127,7 +127,7 @@
 
     <string name="licenses">Lizenzen</string>
 
-    <string name="send_feedback">Feedback senden</string>
+    <string name="send_feedback">Feedback</string>
     <string name="rate_app">App bewerten</string>
     <string name="reset_app">App zurücksetzen</string>
     <string name="reset_app_summary">Alle Einstellungen und Datensätze löschen</string>
@@ -269,4 +269,5 @@
     <string name="extOWA">https://webmail.jade-hs.de/</string>
     <string name="extGuide">http://moodle.jade-hs.de/moodle/mod/wiki/view.php?pageid=1383</string>
     <string name="extOwncloud">https://owncloud.jade-hs.de/</string>
+    <string name="feedbackURL">https://docs.google.com/forms/d/1HhuNHc4rw0QIkwM7WAzDRwlHaWEgNB5YA-CPArHmms8/viewform?usp=send_form</string>
 </resources>
