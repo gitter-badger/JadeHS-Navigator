@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">0.3</string>
+    <string name="version">0.3.1</string>
 
     <string name="app_name">JadeHS-Navigator</string>
 
@@ -269,5 +269,5 @@
     <string name="extOWA">https://webmail.jade-hs.de/</string>
     <string name="extGuide">http://moodle.jade-hs.de/moodle/mod/wiki/view.php?pageid=1383</string>
     <string name="extOwncloud">https://owncloud.jade-hs.de/</string>
-    <string name="feedbackURL">https://docs.google.com/forms/d/1HhuNHc4rw0QIkwM7WAzDRwlHaWEgNB5YA-CPArHmms8/viewform?usp=send_form</string>
+    <string name="feedbackURL">goo.gl/ZinosJ</string>
 </resources>
