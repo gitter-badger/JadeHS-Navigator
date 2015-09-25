@@ -1,4 +1,6 @@
 /**
+ * GCM WILL BE IMPLEMENTED AT A LATER DATE
+ *
  * This file is part of JadeHS-Navigator.
  *
  * JadeHS-Navigator is free software: you can redistribute it and/or modify
@@ -13,7 +15,6 @@
 
  * You should have received a copy of the GNU General Public License
  * along with JadeHS-Navigator.  If not, see <http://www.gnu.org/licenses/>.
- */
 package de.jadehs.jadehsnavigator.service;
 
 import android.content.Intent;
@@ -28,3 +29,4 @@ public class MyInstanceIDListenerService extends InstanceIDListenerService {
         startService(intent);
     }
 }
+*/

@@ -50,7 +50,6 @@ import de.jadehs.jadehsnavigator.fragment.MensaplanFragment;
 import de.jadehs.jadehsnavigator.fragment.NewsFragment;
 import de.jadehs.jadehsnavigator.fragment.VorlesungsplanFragment;
 import de.jadehs.jadehsnavigator.model.NavDrawerItem;
-import de.jadehs.jadehsnavigator.service.RegistrationIntentService;
 import de.jadehs.jadehsnavigator.util.Preferences;
 
 public class MainActivity extends AppCompatActivity {
