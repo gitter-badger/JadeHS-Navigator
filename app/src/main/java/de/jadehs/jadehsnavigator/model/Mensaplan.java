@@ -174,16 +174,8 @@ public class Mensaplan  {
                                     }
                                     mensaplanMeal.setIconsToDescription();
                                 } else {
-                                    //Log.wtf(TAG, "Keinen Eintrag für diesen Tag vorhanden, Obejkt mit der bezeichnung: "+ mealText+ " wurde erstellt.");
                                     mensaplanMeal = new MensaplanMeal(mealText, i);
                                 }
-                                Log.wtf(TAG, " Woche: "+ it + " Anzahl TDs: " +mealsDay.size() + " TableRow: "+ i + " Beschreibung: "+ mealText);
-
-                                //Log.wtf("Meal Text",mealText);
-
-                                //Log.wtf("Meal", "Art: "+mensaplanMeal.getType());
-
-
 
                                 if (it == 0) {
                                     mensaplanMeal.setDayID(mensaplanDaysCurrentWeek.get(j - 1).getId());
