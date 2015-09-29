@@ -4,7 +4,7 @@ Der JadeHS-Navigator ist ein studentisches Open-Source-Projekt aus dem Fachberei
 
 Die App befindet sich noch im Beta-Status und wird fortlaufend entwickelt. Kontaktiere rene.spengel@jade-hs.de für weitere Informationen zur direkten Mitarbeit.
 
-Natürlich sind auch unabhängige Änderungen per GitHub erlaubt! 
+Natürlich sind auch unabhängige Änderungen per GitHub erwünscht und erlaubt! 
 
 ## Prerequisites
 
@@ -14,10 +14,13 @@ Natürlich sind auch unabhängige Änderungen per GitHub erlaubt!
 
 ## Install
 
-1. <code>git clone</code> das Repo oder lade dir die entsprachende ZIP-Datei herunter
-2. In Android Studio: File > New > Import Project..
+1. Forke das Repo
+2. <code>git clone</code> oder lade dir die entsprechende zip-Datei von deinem Fork herunter
+3. In Android Studio: File > New > Import Project..
 
 ## Contribute
+
+Commite auf deinem Fork und stell eine [Pull Request](https://github.com/Ekrow/JadeHS-Navigator/pulls) auf den DEV-branch
 
 ## License
 
