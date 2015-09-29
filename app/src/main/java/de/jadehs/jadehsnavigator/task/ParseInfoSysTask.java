@@ -76,7 +76,11 @@ public class ParseInfoSysTask extends AsyncTask<Void, Void, ArrayList<InfoSysIte
     @Override
     protected void onPostExecute(ArrayList<InfoSysItem> items) {
         // fire 'processFinish' method in InfoSysFragment
-        delegate.processFinish(items);
+        if(this.isSwiperefresh){
+            delegate.processFinish(items, true);
+        }else{
+            delegate.processFinish(items);
+        }
     }
 
     public InfoSys getInfoSys() {

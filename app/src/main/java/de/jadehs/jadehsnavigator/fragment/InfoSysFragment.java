@@ -29,6 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,7 +86,8 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
             }
         });
 
-        updateInfoSys();
+        initializeInfoSys();
+        //updateInfoSys();
     }
 
     @Override
@@ -106,16 +108,10 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
         return false;
     }
 
-    public void updateInfoSys(){
-        // Is not a swipe refresh
-        updateInfoSys(false);
-    }
-
-    public void updateInfoSys(boolean isSwipeRefresh) {
-        Log.wtf(TAG, "Starting updateInfoSys");
+    public void initializeInfoSys(){
+        Log.wtf(TAG, "Starting initializeInfoSys");
         try{
             /* Open datasource and create View */
-            TextView txtLastUpdate = (TextView) getActivity().findViewById(R.id.txtLastUpdate);
             this.preferences = new Preferences(getActivity().getApplicationContext());
             this.datasource = new InfoSysItemDataSource(getActivity().getApplicationContext());
             this.datasource.open();
@@ -125,25 +121,47 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
 
             this.datasource.close();
 
-            ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
-                try {
-                    txtLastUpdate.setText("Letzte Aktualisierung: " + calendarHelper.getDateRightNow(true));
-                    this.asyncTask = new ParseInfoSysTask(getActivity(), this.preferences.getInfoSysURL(), this.preferences.getFB(), isSwipeRefresh);
-                    this.asyncTask.delegate = this;
-                    this.asyncTask.execute();
-                }catch (Exception ex){
-                    Log.wtf(TAG,"INTERNET LOAD", ex);
-                }
-            }else{
-                txtLastUpdate.setTextSize(10);
-                txtLastUpdate.setText("Um neue Einträge abzurufen, bitte Internetverbindung herstellen");
-            }
+            // try to update
+            updateInfoSys(false);
         }catch (Exception ex){
             Log.wtf(TAG,"DATABASE LOAD", ex);
         }
+    }
+
+    public void updateInfoSys(){
+        // Is not a swipe refresh
+        updateInfoSys(false);
+    }
+
+    public void updateInfoSys(boolean isSwipeRefresh) {
+        Log.wtf(TAG, "Starting updateInfoSys");
+
+        TextView txtLastUpdate = (TextView) getActivity().findViewById(R.id.txtLastUpdate);
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        if(isConnected) {
+            try {
+                txtLastUpdate.setText("Letzte Aktualisierung: " + calendarHelper.getDateRightNow(true));
+                this.asyncTask = new ParseInfoSysTask(getActivity(), this.preferences.getInfoSysURL(), this.preferences.getFB(), isSwipeRefresh);
+                this.asyncTask.delegate = this;
+                this.asyncTask.execute();
+            }catch (Exception ex){
+                Log.wtf(TAG,"INTERNET LOAD", ex);
+            }
+        }else{
+            txtLastUpdate.setText("Um neue Einträge abzurufen, bitte Internetverbindung herstellen");
+
+            swipeLayout.setRefreshing(false);
+        }
+    }
+
+    public void processFinish(ArrayList<InfoSysItem> items, boolean isSwipeRefresh) {
+        if(isSwipeRefresh){
+            swipeLayout.setRefreshing(false);
+        }
+        processFinish(items);
     }
 
     @Override
@@ -156,7 +174,7 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
             InfoSysItemAdapter adapter = new InfoSysItemAdapter(getActivity(), items);
 
             lv.setAdapter(adapter);
-            swipeLayout.setRefreshing(false);
+            //swipeLayout.setRefreshing(false);
         }catch (Exception ex){
             Log.wtf(TAG,"ERROR",ex);
         }

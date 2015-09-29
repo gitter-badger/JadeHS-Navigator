@@ -37,8 +37,8 @@ import de.jadehs.jadehsnavigator.database.InfoSysItemDataSource;
 import de.jadehs.jadehsnavigator.util.CalendarHelper;
 
 public class InfoSys {
+    final String TAG = "InfoSys";
 
-    //private int lastUpdate;
     private Context context;
     private String lastUpdate;
     private ArrayList<InfoSysItem> infoSysItems = null;
@@ -56,18 +56,6 @@ public class InfoSys {
     }
 
     public ArrayList<InfoSysItem> parse(){
-        /*
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy h:mm:ss");
-        String formattedDate = sdf.format(date);
-        */
-
-        //SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
-        //SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy   h:mm:ss", Locale.US);
-
-        //String formattedDate = sdf.format(date);
-
-        this.lastUpdate = calendarHelper.getDateRightNow(true);
         this.infoSysItems = new ArrayList<InfoSysItem>();
 
         try {
@@ -83,58 +71,65 @@ public class InfoSys {
 
             for (Element item : doc.select("item")) {
                 String title = item.select("title").first().text();
-                String description = item.select("description").first().text();
-                //String link = item.select("link").first().nextSibling().toString();
                 String link = item.select("link").first().text();
-                String detailDescription = "";
-                try {
-                    Document detailDoc = Jsoup.connect(link).parser(Parser.htmlParser()).get();
-                    detailDescription = detailDoc.body().getElementsByClass("newstext").get(1).html();
-                }catch (Exception ex){
-                    Log.wtf("LinkEx", "Failed", ex);
+
+                //if(infoSysItemDataSource.exists("title", title)) {
+                if(infoSysItemDataSource.exists("link", link)) {
+                    // Parsed entry already exists. Use that one.
+                    Log.wtf("ITEM", "ITEM: " + title + " ALREADY EXISTS!");
+                    //infoSysItem = infoSysItemDataSource.loadInfoSysItemByTitle(title);
+                    infoSysItem = infoSysItemDataSource.loadInfoSysItemByURL(link);
+                }else {
+                    Log.wtf("ITEM", "ITEM: " + title + " IS NEW!");
+                    // Parsed entry doesn't already exists. Create a new one.
+                    String description = item.select("description").first().text();
+                    String detailDescription = "";
+                    try {
+                        Document detailDoc = Jsoup.connect(link).parser(Parser.htmlParser()).get();
+                        detailDescription = detailDoc.body().getElementsByClass("newstext").get(1).html();
+                    } catch (Exception ex) {
+                        Log.wtf(TAG, "URL failed to load", ex);
+                    }
+                    String fullDescription = description + detailDescription;
+
+                    String creator = item.select("dc|creator").first().text();
+                    String created = item.select("dc|date").first().text();
+
+                    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US);
+                    String dateStr = "";
+                    try {
+                        date = sdf2.parse(created);
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(date);
+                        // Set date string (oh and btw Calendar.MONTH returns 0-11 for some reason. because there is a 0th month I guess. fucking java)
+                        dateStr = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + "   " +
+                                cal.get(Calendar.HOUR_OF_DAY) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + " Uhr";
+                    } catch (Exception ex) {
+                        Log.wtf(TAG, "Err", ex);
+                    }
+
+                    infoSysItem = new InfoSysItem(title, fullDescription, link, creator, dateStr, this.fb);
+                    infoSysItemDataSource.createInfoSysItem(infoSysItem);
                 }
-                String fullDescription = description + detailDescription;
-
-                String creator = item.select("dc|creator").first().text();
-                String created = item.select("dc|date").first().text();
-
-                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US);
-                String dateStr = "";
-                try {
-                    date = sdf2.parse(created);
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(date);
-                    // Set date string (and btw Calendar.MONTH returns 0-11 for some reason)
-                    dateStr = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH)+1) + "." + cal.get(Calendar.YEAR) + "   " +
-                            cal.get(Calendar.HOUR_OF_DAY) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + " Uhr";
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                infoSysItem = new InfoSysItem(title,fullDescription,link,creator,dateStr,this.fb);
-                infoSysItemDataSource.createInfoSysItem(infoSysItem);
 
                 this.infoSysItems.add(infoSysItem);
 
-                Log.i("ITEM TAG", "ADDED ITEM");
+                Log.wtf(TAG, "ADDED ITEM");
             }
             infoSysItemDataSource.close();
         }catch (IOException e){
-            Log.e("Parse", "Parsing failed");
+            Log.wtf(TAG, "Parsing failed", e);
             e.printStackTrace();
         }catch (SQLException e){
-            Log.wtf("ERROR", e.getMessage());
+            Log.wtf(TAG, "SQL failed", e);
             e.printStackTrace();
         }
-        Log.i("LIST TAG", "FINISHED ADDING ITEMS");
+        Log.wtf(TAG, "FINISHED ADDING ITEMS");
+
         return infoSysItems;
     }
 
     public List<InfoSysItem> getInfoSysItems(){
         return this.infoSysItems;
-    }
-
-    public String getLastUpdate(){
-        return this.lastUpdate;
     }
 }

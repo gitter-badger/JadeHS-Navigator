@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">0.3.1</string>
+    <string name="version">0.3.2</string>
 
     <string name="app_name">JadeHS-Navigator</string>
 
@@ -17,7 +17,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
-
+    <string name="action_kw">Kalenderwoche</string>
     <string name="action_settings">Einstellungen</string>
     <string name="action_refresh">Aktualisieren</string>
 
@@ -79,10 +79,11 @@
     <string name="license_text">
         <![CDATA[
             <b>JadeHS-Navigator</b><br /><br />
-            Copyright (C) 2015 JadeHS-Navigator Team<br /><br />
+            Copyright &#169; 2015 JadeHS-Navigator Team<br /><br />
             This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br /><br />
             This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br /><br />
             <a href="http://choosealicense.com/licenses/gpl-3.0/">Full License</a><br /><br />
+            <a href="https://github.com/Ekrow/JadeHS-Navigator">Quellcode</a><br /><br />
             <b>jsoup</b><br>
             Copyright 2009-2015 Jonathan Hedley<br /><br />
             The MIT License (MIT)<br /><br />
@@ -163,7 +164,7 @@
     <string name="ok">OK</string>
     <string name="negative_default">Nein, übernehme Standardeinstellungen</string>
 
-    <string name="alert_firsttimesetup">Willkommen zum JadeHS-Navigator. Da dies Dein erster Start der App ist, solltest Du ein paar Einstellungen vornehmen, ansonsten werden Standardeinstellungen ausgewählt</string>
+    <string name="alert_firsttimesetup">Willkommen zum JadeHS-Navigator\nDa dies Dein erster Start der App ist, solltest Du ein paar Einstellungen vornehmen, ansonsten werden Standardeinstellungen ausgewählt.\nMöchtest Du diese Einstellungen jetzt vornehmen?</string>
 
     <string name="failed_to_open_website">Website konnte nicht geöffnet werden</string>
 
@@ -269,5 +270,5 @@
     <string name="extOWA">https://webmail.jade-hs.de/</string>
     <string name="extGuide">http://moodle.jade-hs.de/moodle/mod/wiki/view.php?pageid=1383</string>
     <string name="extOwncloud">https://owncloud.jade-hs.de/</string>
-    <string name="feedbackURL">goo.gl/ZinosJ</string>
+    <string name="feedbackURL">http://goo.gl/ZinosJ</string>
 </resources>

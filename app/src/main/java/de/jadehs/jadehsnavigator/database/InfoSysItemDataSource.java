@@ -58,7 +58,6 @@ public class InfoSysItemDataSource {
 
     public void createInfoSysItem(InfoSysItem infoSysItem){
         try{
-        if(!this.exists(dbHelper.COLUMN_TITLE, infoSysItem.getTitle())) {
             ContentValues values = new ContentValues();
             /* Sets values */
             values.put(dbHelper.COLUMN_TITLE, infoSysItem.getTitle());
@@ -69,9 +68,7 @@ public class InfoSysItemDataSource {
             values.put(dbHelper.COLUMN_FB, infoSysItem.getFB());
 
             this.database.insert(dbHelper.TABLE_INFOSYSITEMS, null, values);
-            } else {
-                Log.wtf(TAG, "Item already exists");
-            }
+            Log.wtf(TAG, "Created item in DB!");
         }catch (Exception ex){
             Log.wtf(TAG, "Couldn't create item!", ex);
         }
@@ -117,7 +114,7 @@ public class InfoSysItemDataSource {
     }
 
     public boolean exists(String fieldName, String fieldValue) {
-        String Query = "Select * from " + this.DB_TABLE + " where " + fieldName + " = '" + fieldValue + "'";
+        String Query = "Select title from " + this.DB_TABLE + " where " + fieldName + " = '" + fieldValue + "'";
         Cursor cursor = this.database.rawQuery(Query, null);
         if(cursor.getCount() <= 0){
             cursor.close();
@@ -128,6 +125,28 @@ public class InfoSysItemDataSource {
         return true;
     }
 
+    public InfoSysItem loadInfoSysItemByTitle(String title){
+        String Query = "Select * from " + this.DB_TABLE + " where " + dbHelper.COLUMN_TITLE + " = '" + title + "'";
+        Cursor cursor = this.database.rawQuery(Query, null);
+        cursor.moveToFirst();
+        if(cursor.getCount() <= 0){
+            cursor.toString();
+        }
+
+        return cursorToInfoSysItem(cursor);
+    }
+
+    public InfoSysItem loadInfoSysItemByURL(String url){
+        String Query = "Select * from " + this.DB_TABLE + " where " + dbHelper.COLUMN_LINK + " = '" + url + "'";
+        Cursor cursor = this.database.rawQuery(Query, null);
+        cursor.moveToFirst();
+        if(cursor.getCount() <= 0){
+            cursor.toString();
+        }
+
+        return cursorToInfoSysItem(cursor);
+    }
+
     /**
      * Creates a InfoSysItem from the given database cursor
      *
@@ -136,14 +155,17 @@ public class InfoSysItemDataSource {
      */
     private InfoSysItem cursorToInfoSysItem(Cursor cursor){
         InfoSysItem infoSysItem = new InfoSysItem();
-
-        infoSysItem.setID(cursor.getLong(0));
-        infoSysItem.setTitle(cursor.getString(1));
-        infoSysItem.setDescription(cursor.getString(2));
-        infoSysItem.setLink(cursor.getString(3));
-        infoSysItem.setCreator(cursor.getString(4));
-        infoSysItem.setCreated(cursor.getString(5));
-        infoSysItem.setFB(cursor.getInt(6));
+        try {
+            infoSysItem.setID(cursor.getLong(0));
+            infoSysItem.setTitle(cursor.getString(1));
+            infoSysItem.setDescription(cursor.getString(2));
+            infoSysItem.setLink(cursor.getString(3));
+            infoSysItem.setCreator(cursor.getString(4));
+            infoSysItem.setCreated(cursor.getString(5));
+            infoSysItem.setFB(cursor.getInt(6));
+        }catch (Exception ex){
+            Log.wtf(TAG, "Err", ex);
+        }
 
         return  infoSysItem;
     }

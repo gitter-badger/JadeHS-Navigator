@@ -171,6 +171,7 @@ public class SettingsFragment extends PreferenceFragment {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     final String packageName = getActivity().getPackageName();
+                    // try to open the play store page. if it fails, fall back to webbrowser
                     try {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
                     } catch (Exception ex){
@@ -236,6 +237,8 @@ public class SettingsFragment extends PreferenceFragment {
                     }
                     fb.setSummary(fbname);
 
+                    resetSG();
+
                     return true;
                 }
             });
@@ -253,5 +256,12 @@ public class SettingsFragment extends PreferenceFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         getActivity().finish();
         getActivity().startActivity(getActivity().getIntent());
+    }
+
+    public void resetSG(){
+        //
+        Preference studiengang = findPreference("studiengang_wahl");
+        studiengang.setSummary("");
+        preferences.save("StudiengangID","Bitte wählen einen Studiengang");
     }
 }

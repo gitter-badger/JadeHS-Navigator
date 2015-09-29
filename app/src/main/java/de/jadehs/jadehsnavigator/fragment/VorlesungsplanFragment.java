@@ -151,7 +151,7 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
 
                 builder.show();
                 break;
-
+            /*
             case R.id.show_semester:
                 getActivity().findViewById(R.id.vplan_semester).setVisibility(View.VISIBLE);
                 /*int currentWeek = Integer.parseInt(new SimpleDateFormat("w").format(new java.util.Date()));
@@ -160,9 +160,9 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
                 else
                     this.weekOfYear = "34-52";
                 updateVPlan();
-                setCurrentWeekNumber();*/
+                setCurrentWeekNumber();
                 break;
-
+            */
             case R.id.refresh_vplan:
                 updateVPlan();
         }

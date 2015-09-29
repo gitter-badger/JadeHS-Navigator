@@ -24,6 +24,9 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -67,6 +70,26 @@ public class NewsFragment extends Fragment implements RSSAsyncResponse {
         super.onViewCreated(view, savedInstanceState);
 
         updateRSSFeeds();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // infosys = news
+        inflater.inflate(R.menu.fragment_infosys, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // infosys = news
+        switch (item.getItemId()) {
+            case R.id.refresh_infosys:
+
+                updateRSSFeeds();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return false;
     }
 
     public void updateRSSFeeds(){
