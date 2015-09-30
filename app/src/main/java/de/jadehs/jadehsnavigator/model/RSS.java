@@ -32,6 +32,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import de.jadehs.jadehsnavigator.database.NewsItemDataSource;
+
 public class RSS {
     private Context context;
     private String lastUpdate;
@@ -56,6 +58,8 @@ public class RSS {
         try {
             //InfoSysItemDataSource infoSysItemDataSource = new InfoSysItemDataSource(this.context);
             //infoSysItemDataSource.open();
+            NewsItemDataSource newsItemDataSource = new NewsItemDataSource(this.context);
+            newsItemDataSource.open();
 
             RSSItem rssItem;
 
@@ -66,31 +70,40 @@ public class RSS {
 
             for (Element item : doc.select("item")) {
                 String title = item.select("title").first().text();
-                String description = item.select("description").first().text();
-                String link = item.select("link").first().text();
-                String pubDate = item.select("pubDate").first().text();
+                // check if exists
+                if(newsItemDataSource.exists("title", title)) {
+                    // Parsed entry already exists. Use that one.
+                    Log.wtf("ITEM", "ITEM: " + title + " ALREADY EXISTS!");
+                    //infoSysItem = infoSysItemDataSource.loadInfoSysItemByTitle(title);
+                    rssItem = newsItemDataSource.loadRSSItemByTitle(title);
+                }else {
+                    String description = item.select("description").first().text();
+                    String link = item.select("link").first().text();
+                    String pubDate = item.select("pubDate").first().text();
 
-                SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
-                Date date = null;
-                String dateStr = "";
-                try{
-                    date = sdf.parse(pubDate);
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(date);
-                    // Set date string
-                    dateStr =   cal.get(Calendar.DAY_OF_MONTH) + "." + cal.get(Calendar.MONTH) + "." + cal.get(Calendar.YEAR) + " - " +
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
+                    Date date = null;
+                    String dateStr = "";
+                    try {
+                        date = sdf.parse(pubDate);
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(date);
+                        // Set date string
+                        dateStr = cal.get(Calendar.DAY_OF_MONTH) + "." + cal.get(Calendar.MONTH) + "." + cal.get(Calendar.YEAR) + " - " +
                                 cal.get(Calendar.HOUR_OF_DAY) + ":" + String.format("%02d", cal.get(Calendar.MINUTE));
-                }catch (Exception ex){
-                    ex.printStackTrace();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    //@todo: pubDate 7 Tage vllt? Studentenwerk geht zurück bis Novemeber 14...
+
+                    //infoSysItem = new InfoSysItem(title,description,link,creator,created,this.fb);
+                    //infoSysItemDataSource.createInfoSysItem(infoSysItem);
+
+                    //this.infoSysItems.add(infoSysItem);
+
+                    rssItem = new RSSItem(title, description, link, this.origin.getID(), dateStr);
+                    newsItemDataSource.createNewsItem(rssItem);
                 }
-                //@todo: pubDate 7 Tage vllt? Studentenwerk geht zurück bis Novemeber 14...
-
-                //infoSysItem = new InfoSysItem(title,description,link,creator,created,this.fb);
-                //infoSysItemDataSource.createInfoSysItem(infoSysItem);
-
-                //this.infoSysItems.add(infoSysItem);
-
-                rssItem = new RSSItem(title, description, link, this.origin.getID(), dateStr);
                 this.rssItems.add(rssItem);
                 //Log.wtf("RSS FROM ID: " + this.origin.getID(), rssItem.getTitle() + "(" + rssItem.getLink() + ")");
 
@@ -108,11 +121,14 @@ public class RSS {
     }
 
     public boolean readAll(){
-        this.rssItems = new ArrayList<RSSItem>();
+        try {
+            this.rssItems = new ArrayList<RSSItem>();
+            NewsItemDataSource newsItemDataSource = new NewsItemDataSource(this.context);
+            newsItemDataSource.open();
 
 
-        for(RSSOrigin origin : this.origins) {
-            try {
+            for(RSSOrigin origin : this.origins) {
+
                 Log.wtf("RSS", "PARSING: " + origin.getTitle());
                 //InfoSysItemDataSource infoSysItemDataSource = new InfoSysItemDataSource(this.context);
                 //infoSysItemDataSource.open();
@@ -125,43 +141,50 @@ public class RSS {
                 //Log.i("PARSING TAG", "Done Parsing");
 
                 for (Element item : doc.select("item")) {
-                    String title = item.select("title").first().text();
-                    String description = item.select("description").first().text();
                     String link = item.select("link").first().text();
-                    String pubDate = item.select("pubDate").first().text();
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
-                    Date date;
-                    String dateStr = "";
-                    try {
-                        date = sdf.parse(pubDate);
-                        Calendar cal = Calendar.getInstance();
-                        cal.setTime(date);
-                        // Set date string
-                        dateStr = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH)+1) + "." + cal.get(Calendar.YEAR) + "   " +
-                                cal.get(Calendar.HOUR_OF_DAY) + ":" + String.format("%02d", cal.get(Calendar.MINUTE));
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if (newsItemDataSource.exists("link", link)) {
+                        // Parsed entry already exists. Use that one.
+                        Log.wtf("ITEM", "ITEM: " + link + " ALREADY EXISTS!");
+                        //infoSysItem = infoSysItemDataSource.loadInfoSysItemByTitle(title);
+                        rssItem = newsItemDataSource.loadRSSItemByURL(link);
+                    } else {
+                        String title = item.select("title").first().text();
+                        String description = item.select("description").first().text();
+                        String pubDate = item.select("pubDate").first().text();
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
+                        Date date;
+                        String dateStr = "";
+                        try {
+                            date = sdf.parse(pubDate);
+                            Calendar cal = Calendar.getInstance();
+                            cal.setTime(date);
+                            // Set date string
+                            dateStr = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + "   " +
+                                    cal.get(Calendar.HOUR_OF_DAY) + ":" + String.format("%02d", cal.get(Calendar.MINUTE));
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        //infoSysItem = new InfoSysItem(title,description,link,creator,created,this.fb);
+                        //infoSysItemDataSource.createInfoSysItem(infoSysItem);
+
+                        //this.infoSysItems.add(infoSysItem);
+
+                        rssItem = new RSSItem(title, description, link, origin, dateStr);
+                        newsItemDataSource.createNewsItem(rssItem);
                     }
-                    //infoSysItem = new InfoSysItem(title,description,link,creator,created,this.fb);
-                    //infoSysItemDataSource.createInfoSysItem(infoSysItem);
-
-                    //this.infoSysItems.add(infoSysItem);
-
-                    rssItem = new RSSItem(title, description, link, origin, dateStr);
                     this.rssItems.add(rssItem);
                     //Log.wtf("RSS FROM ID: " + this.origin.getID(), rssItem.getTitle() + "(" + rssItem.getLink() + ")");
 
                     //Log.i("ITEM TAG", "ADDED ITEM");
+                    }
                 }
-
-                //infoSysItemDataSource.close();
             } catch (HttpStatusException httpEx) {
                 Log.wtf("HTTP ERROR", "SERVER UNREACHABLE", httpEx);
             } catch (Exception ex) {
                 Log.wtf("PARSING ERROR", "PARSING FAILED", ex);
             }
-        }
 
         return true;
     }

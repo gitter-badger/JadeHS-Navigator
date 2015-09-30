@@ -40,6 +40,7 @@ import java.util.ArrayList;
 
 import de.jadehs.jadehsnavigator.R;
 import de.jadehs.jadehsnavigator.adapter.NewsPagerAdapter;
+import de.jadehs.jadehsnavigator.database.NewsItemDataSource;
 import de.jadehs.jadehsnavigator.model.RSSItem;
 import de.jadehs.jadehsnavigator.model.RSSOrigin;
 import de.jadehs.jadehsnavigator.response.RSSAsyncResponse;
@@ -51,12 +52,20 @@ import de.jadehs.jadehsnavigator.view.NewsTabLayout;
  * Created by re1015 on 12.08.2015.
  */
 public class NewsFragment extends Fragment implements RSSAsyncResponse {
-    final String TAG = "NEWSFRAGMENT";
+    final String TAG = "NewsFragment";
 
     private NewsTabLayout mSlidingTabLayout;
     private ViewPager mViewPager;
+    private NewsItemDataSource datasource;
 
     public NewsFragment(){}
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,7 +78,8 @@ public class NewsFragment extends Fragment implements RSSAsyncResponse {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        updateRSSFeeds();
+        //updateRSSFeeds();
+        initializeRSSFeeds();
     }
 
     @Override
@@ -83,8 +93,8 @@ public class NewsFragment extends Fragment implements RSSAsyncResponse {
         // infosys = news
         switch (item.getItemId()) {
             case R.id.refresh_infosys:
-
                 updateRSSFeeds();
+
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -92,7 +102,29 @@ public class NewsFragment extends Fragment implements RSSAsyncResponse {
         return false;
     }
 
+    public void initializeRSSFeeds(){
+        // try to load from db
+        Log.wtf(TAG, "Starting initializeRSSFeeds");
+        try{
+            /* Open datasource and create View */
+            this.datasource = new NewsItemDataSource(getActivity().getApplicationContext());
+            this.datasource.open();
+            //ArrayList<RSSItem> infoSysItems = this.datasource.getInfoSysItemsFromFB(this.preferences.getFB());
+            ArrayList<RSSItem> rssItems = this.datasource.getAllRSSItems();
+
+            processFinish(rssItems); // create View
+
+            this.datasource.close();
+
+            // try to update
+            updateRSSFeeds();
+        }catch (Exception ex){
+            Log.wtf(TAG,"DATABASE LOAD", ex);
+        }
+    }
+
     public void updateRSSFeeds(){
+        Log.wtf(TAG, "Starting updateRSSFeeds");
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
@@ -117,8 +149,8 @@ public class NewsFragment extends Fragment implements RSSAsyncResponse {
             }
         }else{
             Log.wtf(TAG, "NO INTERNET CONNECTION");
-
-            getActivity().findViewById(R.id.errorOverlay).setVisibility(View.VISIBLE); // Displays the error overlay
+            //@todo: footer
+            //getActivity().findViewById(R.id.errorOverlay).setVisibility(View.VISIBLE); // Displays the error overlay
         }
     }
 

@@ -33,15 +33,22 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import de.jadehs.jadehsnavigator.R;
 import de.jadehs.jadehsnavigator.model.InfoSysItem;
 import de.jadehs.jadehsnavigator.view.ExpandableTextView;
 
 public class InfoSysItemAdapter extends BaseAdapter{
-    private static final String TAG = "INFOSYSITEMADAPTER";
+    private static final String TAG = "InfoSysItemAdapter";
 
+    private Date date;
+    Calendar cal = Calendar.getInstance();
     private Context context;
     private ArrayList<InfoSysItem> infoSysItems;
 
@@ -83,7 +90,21 @@ public class InfoSysItemAdapter extends BaseAdapter{
 
         txtDescription.setText(Html.fromHtml(this.infoSysItems.get(position).getDescription()));
         //txtDescription.setMovementMethod(LinkMovementMethod.getInstance()); // Automatically convert links to be clickable
-        txtFooter.setText(this.infoSysItems.get(position).getCreator() + ": " + this.infoSysItems.get(position).getCreated());
+        // @todo: change aussehen
+        String timestamp = this.infoSysItems.get(position).getCreated();
+        String dateStr = "";
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        try {
+            date = sdf2.parse(timestamp);
+            cal.setTime(date);
+
+            dateStr = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + "   " +
+                      String.format("%02d", cal.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + " Uhr";
+        }catch (Exception ex){
+            Log.wtf(TAG, "Err", ex);
+        }
+
+        txtFooter.setText(this.infoSysItems.get(position).getCreator() + ": " + dateStr);
 
         return convertView; // Returns the created View
     }

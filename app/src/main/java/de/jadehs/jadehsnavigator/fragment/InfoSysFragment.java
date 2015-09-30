@@ -34,7 +34,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Locale;
 
 import de.jadehs.jadehsnavigator.R;
 import de.jadehs.jadehsnavigator.adapter.InfoSysItemAdapter;
@@ -48,6 +54,9 @@ import de.jadehs.jadehsnavigator.util.Preferences;
 public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
     private static final String TAG = "INFOSYSFRAGMENT";
 
+    private Date date;
+    private Calendar cal = Calendar.getInstance();
+    SimpleDateFormat sdf2 = new SimpleDateFormat("dd.MM.yyyy   HH:mm", Locale.US);
     private SwipeRefreshLayout swipeLayout;
     private InfoSysItemDataSource datasource;
     private ParseInfoSysTask asyncTask;
@@ -116,6 +125,13 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
             this.datasource = new InfoSysItemDataSource(getActivity().getApplicationContext());
             this.datasource.open();
             ArrayList<InfoSysItem> infoSysItems = this.datasource.getInfoSysItemsFromFB(this.preferences.getFB());
+
+            Collections.sort(infoSysItems, new Comparator<InfoSysItem>() {
+                @Override
+                public int compare(InfoSysItem lhs, InfoSysItem rhs) {
+                    return rhs.getCreated().compareTo(lhs.getCreated());
+                }
+            });
 
             processFinish(infoSysItems); // create View
 

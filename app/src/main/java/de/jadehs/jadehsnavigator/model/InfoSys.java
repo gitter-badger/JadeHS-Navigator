@@ -26,6 +26,7 @@ import org.jsoup.parser.Parser;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -70,18 +71,16 @@ public class InfoSys {
             Log.i("PARSING TAG", "Done Parsing");
 
             for (Element item : doc.select("item")) {
-                String title = item.select("title").first().text();
                 String link = item.select("link").first().text();
 
-                //if(infoSysItemDataSource.exists("title", title)) {
                 if(infoSysItemDataSource.exists("link", link)) {
                     // Parsed entry already exists. Use that one.
-                    Log.wtf("ITEM", "ITEM: " + title + " ALREADY EXISTS!");
-                    //infoSysItem = infoSysItemDataSource.loadInfoSysItemByTitle(title);
+                    Log.wtf("ITEM", "ITEM: " + link + " ALREADY EXISTS!");
                     infoSysItem = infoSysItemDataSource.loadInfoSysItemByURL(link);
                 }else {
-                    Log.wtf("ITEM", "ITEM: " + title + " IS NEW!");
                     // Parsed entry doesn't already exists. Create a new one.
+                    Log.wtf("ITEM", "ITEM: " + link + " IS NEW!");
+                    String title = item.select("title").first().text();
                     String description = item.select("description").first().text();
                     String detailDescription = "";
                     try {
@@ -102,8 +101,13 @@ public class InfoSys {
                         Calendar cal = Calendar.getInstance();
                         cal.setTime(date);
                         // Set date string (oh and btw Calendar.MONTH returns 0-11 for some reason. because there is a 0th month I guess. fucking java)
-                        dateStr = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + "   " +
-                                cal.get(Calendar.HOUR_OF_DAY) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + " Uhr";
+                        //dateStr = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + "   " +
+                                //String.format("%02d", cal.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + " Uhr";
+                        dateStr = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + " " +
+                                  String.format("%02d", cal.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + ":" + String.format("%02d", cal.get(Calendar.SECOND));
+                        Timestamp timestamp = new Timestamp(cal.getTimeInMillis());
+                        dateStr = timestamp.toString();
+
                     } catch (Exception ex) {
                         Log.wtf(TAG, "Err", ex);
                     }
