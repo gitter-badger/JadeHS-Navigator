@@ -121,7 +121,7 @@ public class InfoSysItemAdapter extends BaseAdapter{
                 final String url = this.url;
                 if (url.startsWith("http://") || url.startsWith("https://")) {
                     final AlertDialog.Builder builder = new AlertDialog.Builder(context.getApplicationContext());
-                    builder.setMessage(context.getString(R.string.dialog_open_website))
+                    builder.setMessage(context.getString(R.string.dialog_open_infosys))
                             .setCancelable(true)
                             .setPositiveButton(context.getString(R.string.positive),
                                     new DialogInterface.OnClickListener() {

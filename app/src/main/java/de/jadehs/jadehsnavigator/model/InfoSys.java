@@ -75,11 +75,11 @@ public class InfoSys {
 
                 if(infoSysItemDataSource.exists("link", link)) {
                     // Parsed entry already exists. Use that one.
-                    Log.wtf("ITEM", "ITEM: " + link + " ALREADY EXISTS!");
+                    //Log.wtf("ITEM", "ITEM: " + link + " ALREADY EXISTS!");
                     infoSysItem = infoSysItemDataSource.loadInfoSysItemByURL(link);
                 }else {
                     // Parsed entry doesn't already exists. Create a new one.
-                    Log.wtf("ITEM", "ITEM: " + link + " IS NEW!");
+                    //Log.wtf("ITEM", "ITEM: " + link + " IS NEW!");
                     String title = item.select("title").first().text();
                     String description = item.select("description").first().text();
                     String detailDescription = "";
@@ -103,8 +103,9 @@ public class InfoSys {
                         // Set date string (oh and btw Calendar.MONTH returns 0-11 for some reason. because there is a 0th month I guess. fucking java)
                         //dateStr = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + "   " +
                                 //String.format("%02d", cal.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + " Uhr";
-                        dateStr = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + " " +
+                        /*dateStr = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + " " +
                                   String.format("%02d", cal.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + ":" + String.format("%02d", cal.get(Calendar.SECOND));
+                        */
                         Timestamp timestamp = new Timestamp(cal.getTimeInMillis());
                         dateStr = timestamp.toString();
 

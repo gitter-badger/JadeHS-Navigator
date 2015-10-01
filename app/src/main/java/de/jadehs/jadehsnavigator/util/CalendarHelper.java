@@ -11,16 +11,9 @@ public class CalendarHelper {
     Calendar c;
     Date date;
 
-
-
     public CalendarHelper(){
         this.c = Calendar.getInstance();
         this.date = c.getTime();
-
-
-
-
-
     }
         public int getDay(){
             int day = this.c.get(Calendar.DAY_OF_WEEK);

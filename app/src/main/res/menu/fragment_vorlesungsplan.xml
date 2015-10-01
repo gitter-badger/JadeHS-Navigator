@@ -6,8 +6,8 @@
         android:id="@+id/refresh_vplan"
         android:orderInCategory="1"
         android:title="@string/action_refresh"
-        android:icon="@android:drawable/stat_notify_sync"
-        app:showAsAction="ifRoom" />
+        android:icon="@android:drawable/stat_notify_sync" />
+        <!--app:showAsAction="ifRoom"-->
 
     <item
         android:id="@+id/change_kw_vplan"

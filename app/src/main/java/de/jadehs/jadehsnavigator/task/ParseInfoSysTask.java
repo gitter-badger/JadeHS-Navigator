@@ -67,6 +67,7 @@ public class ParseInfoSysTask extends AsyncTask<Void, Void, ArrayList<InfoSysIte
         if(!this.isSwiperefresh) {
             try {
                 activity.findViewById(R.id.progressInfoSys).setVisibility(View.VISIBLE);
+                activity.findViewById(R.id.progressContainer).setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();
             }

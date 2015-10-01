@@ -4,6 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:visibility="visible"
+        android:id="@+id/progressVPlan"
+        android:focusable="false"
+        android:background="@color/jadehs_red">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:id="@+id/progressBar"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+    </RelativeLayout>
+
     <de.jadehs.jadehsnavigator.view.VPlanTabLayout
         android:id="@+id/vplan_sliding_tabs"
         android:layout_width="match_parent"
@@ -18,6 +40,7 @@
         android:background="@android:color/white"
         />
 
+    <!--
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,6 +62,7 @@
             android:visibility="visible" />
 
     </RelativeLayout>
+    -->
 
     <RelativeLayout
         android:id="@+id/empty_vplan"
@@ -66,6 +90,20 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Diese Funktion steht demnächst zur Verfügung!" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/empty_sg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Bitte wähle einen Studiengang aus" />
     </RelativeLayout>
 
 </LinearLayout>

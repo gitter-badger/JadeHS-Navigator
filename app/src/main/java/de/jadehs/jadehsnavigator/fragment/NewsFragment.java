@@ -37,10 +37,13 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import de.jadehs.jadehsnavigator.R;
 import de.jadehs.jadehsnavigator.adapter.NewsPagerAdapter;
 import de.jadehs.jadehsnavigator.database.NewsItemDataSource;
+import de.jadehs.jadehsnavigator.model.InfoSysItem;
 import de.jadehs.jadehsnavigator.model.RSSItem;
 import de.jadehs.jadehsnavigator.model.RSSOrigin;
 import de.jadehs.jadehsnavigator.response.RSSAsyncResponse;
@@ -157,6 +160,13 @@ public class NewsFragment extends Fragment implements RSSAsyncResponse {
     @Override
     public void processFinish(ArrayList<RSSItem> items) {
         try {
+            Collections.sort(items, new Comparator<RSSItem>() {
+                @Override
+                public int compare(RSSItem lhs, RSSItem rhs) {
+                    return rhs.getCreated().compareTo(lhs.getCreated());
+                }
+            });
+
             getActivity().findViewById(R.id.progressNews).setVisibility(View.GONE);
             mViewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
             mViewPager.setAdapter(new NewsPagerAdapter(getActivity(), items));

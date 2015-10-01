@@ -29,7 +29,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,11 +51,8 @@ import de.jadehs.jadehsnavigator.util.CalendarHelper;
 import de.jadehs.jadehsnavigator.util.Preferences;
 
 public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
-    private static final String TAG = "INFOSYSFRAGMENT";
+    private static final String TAG = "InfoSysFragment";
 
-    private Date date;
-    private Calendar cal = Calendar.getInstance();
-    SimpleDateFormat sdf2 = new SimpleDateFormat("dd.MM.yyyy   HH:mm", Locale.US);
     private SwipeRefreshLayout swipeLayout;
     private InfoSysItemDataSource datasource;
     private ParseInfoSysTask asyncTask;
@@ -96,7 +92,6 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
         });
 
         initializeInfoSys();
-        //updateInfoSys();
     }
 
     @Override
@@ -151,6 +146,7 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
 
     public void updateInfoSys(boolean isSwipeRefresh) {
         Log.wtf(TAG, "Starting updateInfoSys");
+        this.preferences = new Preferences(getActivity().getApplicationContext());
 
         TextView txtLastUpdate = (TextView) getActivity().findViewById(R.id.txtLastUpdate);
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -184,13 +180,18 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
     public void processFinish(ArrayList<InfoSysItem> items) {
         Log.wtf(TAG,"Starting processFinish");
         try {
-            ListView lv = (ListView) getActivity().findViewById(R.id.listInfoSys);
+            getActivity().findViewById(R.id.progressContainer).setVisibility(View.GONE); // Hides loading icon
+            if(items.size() > 0) {
+                ListView lv = (ListView) getActivity().findViewById(R.id.listInfoSys);
 
-            getActivity().findViewById(R.id.progressInfoSys).setVisibility(View.GONE); // Hides loading icon
-            InfoSysItemAdapter adapter = new InfoSysItemAdapter(getActivity(), items);
+                //getActivity().findViewById(R.id.progressInfoSys).setVisibility(View.GONE); // Hides loading icon
+                InfoSysItemAdapter adapter = new InfoSysItemAdapter(getActivity(), items);
 
-            lv.setAdapter(adapter);
-            //swipeLayout.setRefreshing(false);
+                lv.setAdapter(adapter);
+                //swipeLayout.setRefreshing(false);
+            }else{
+                Toast.makeText(getActivity(), "Fehler beim Aktualisieren",Toast.LENGTH_LONG).show();
+            }
         }catch (Exception ex){
             Log.wtf(TAG,"ERROR",ex);
         }
