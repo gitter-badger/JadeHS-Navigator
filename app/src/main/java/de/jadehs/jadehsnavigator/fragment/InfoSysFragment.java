@@ -33,7 +33,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Locale;
 
 import de.jadehs.jadehsnavigator.R;
 import de.jadehs.jadehsnavigator.adapter.InfoSysItemAdapter;
@@ -45,7 +51,7 @@ import de.jadehs.jadehsnavigator.util.CalendarHelper;
 import de.jadehs.jadehsnavigator.util.Preferences;
 
 public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
-    private static final String TAG = "INFOSYSFRAGMENT";
+    private static final String TAG = "InfoSysFragment";
 
     private SwipeRefreshLayout swipeLayout;
     private InfoSysItemDataSource datasource;
@@ -85,7 +91,7 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
             }
         });
 
-        updateInfoSys();
+        initializeInfoSys();
     }
 
     @Override
@@ -106,6 +112,33 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
         return false;
     }
 
+    public void initializeInfoSys(){
+        Log.wtf(TAG, "Starting initializeInfoSys");
+        try{
+            /* Open datasource and create View */
+            this.preferences = new Preferences(getActivity().getApplicationContext());
+            this.datasource = new InfoSysItemDataSource(getActivity().getApplicationContext());
+            this.datasource.open();
+            ArrayList<InfoSysItem> infoSysItems = this.datasource.getInfoSysItemsFromFB(this.preferences.getFB());
+
+            Collections.sort(infoSysItems, new Comparator<InfoSysItem>() {
+                @Override
+                public int compare(InfoSysItem lhs, InfoSysItem rhs) {
+                    return rhs.getCreated().compareTo(lhs.getCreated());
+                }
+            });
+
+            processFinish(infoSysItems); // create View
+
+            this.datasource.close();
+
+            // try to update
+            updateInfoSys(false);
+        }catch (Exception ex){
+            Log.wtf(TAG,"DATABASE LOAD", ex);
+        }
+    }
+
     public void updateInfoSys(){
         // Is not a swipe refresh
         updateInfoSys(false);
@@ -113,50 +146,52 @@ public class InfoSysFragment extends Fragment implements InfoSysAsyncResponse {
 
     public void updateInfoSys(boolean isSwipeRefresh) {
         Log.wtf(TAG, "Starting updateInfoSys");
-        try{
-            /* Open datasource and create View */
-            TextView txtLastUpdate = (TextView) getActivity().findViewById(R.id.txtLastUpdate);
-            this.preferences = new Preferences(getActivity().getApplicationContext());
-            this.datasource = new InfoSysItemDataSource(getActivity().getApplicationContext());
-            this.datasource.open();
-            ArrayList<InfoSysItem> infoSysItems = this.datasource.getInfoSysItemsFromFB(this.preferences.getFB());
+        this.preferences = new Preferences(getActivity().getApplicationContext());
 
-            processFinish(infoSysItems); // create View
+        TextView txtLastUpdate = (TextView) getActivity().findViewById(R.id.txtLastUpdate);
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-            this.datasource.close();
-
-            ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            if(isConnected) {
-                try {
-                    txtLastUpdate.setText("Letzte Aktualisierung: " + calendarHelper.getDateRightNow(true));
-                    this.asyncTask = new ParseInfoSysTask(getActivity(), this.preferences.getInfoSysURL(), this.preferences.getFB(), isSwipeRefresh);
-                    this.asyncTask.delegate = this;
-                    this.asyncTask.execute();
-                }catch (Exception ex){
-                    Log.wtf(TAG,"INTERNET LOAD", ex);
-                }
-            }else{
-                txtLastUpdate.setTextSize(10);
-                txtLastUpdate.setText("Um neue Einträge abzurufen, bitte Internetverbindung herstellen");
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        if(isConnected) {
+            try {
+                txtLastUpdate.setText("Letzte Aktualisierung: " + calendarHelper.getDateRightNow(true));
+                this.asyncTask = new ParseInfoSysTask(getActivity(), this.preferences.getInfoSysURL(), this.preferences.getFB(), isSwipeRefresh);
+                this.asyncTask.delegate = this;
+                this.asyncTask.execute();
+            }catch (Exception ex){
+                Log.wtf(TAG,"INTERNET LOAD", ex);
             }
-        }catch (Exception ex){
-            Log.wtf(TAG,"DATABASE LOAD", ex);
+        }else{
+            txtLastUpdate.setText("Um neue Einträge abzurufen, bitte Internetverbindung herstellen");
+
+            swipeLayout.setRefreshing(false);
         }
+    }
+
+    public void processFinish(ArrayList<InfoSysItem> items, boolean isSwipeRefresh) {
+        if(isSwipeRefresh){
+            swipeLayout.setRefreshing(false);
+        }
+        processFinish(items);
     }
 
     @Override
     public void processFinish(ArrayList<InfoSysItem> items) {
         Log.wtf(TAG,"Starting processFinish");
         try {
-            ListView lv = (ListView) getActivity().findViewById(R.id.listInfoSys);
+            getActivity().findViewById(R.id.progressContainer).setVisibility(View.GONE); // Hides loading icon
+            if(items.size() > 0) {
+                ListView lv = (ListView) getActivity().findViewById(R.id.listInfoSys);
 
-            getActivity().findViewById(R.id.progressInfoSys).setVisibility(View.GONE); // Hides loading icon
-            InfoSysItemAdapter adapter = new InfoSysItemAdapter(getActivity(), items);
+                //getActivity().findViewById(R.id.progressInfoSys).setVisibility(View.GONE); // Hides loading icon
+                InfoSysItemAdapter adapter = new InfoSysItemAdapter(getActivity(), items);
 
-            lv.setAdapter(adapter);
-            swipeLayout.setRefreshing(false);
+                lv.setAdapter(adapter);
+                //swipeLayout.setRefreshing(false);
+            }else{
+                Toast.makeText(getActivity(), "Fehler beim Aktualisieren",Toast.LENGTH_LONG).show();
+            }
         }catch (Exception ex){
             Log.wtf(TAG,"ERROR",ex);
         }

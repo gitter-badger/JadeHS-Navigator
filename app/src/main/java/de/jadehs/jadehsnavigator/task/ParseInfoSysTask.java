@@ -67,6 +67,7 @@ public class ParseInfoSysTask extends AsyncTask<Void, Void, ArrayList<InfoSysIte
         if(!this.isSwiperefresh) {
             try {
                 activity.findViewById(R.id.progressInfoSys).setVisibility(View.VISIBLE);
+                activity.findViewById(R.id.progressContainer).setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -76,7 +77,11 @@ public class ParseInfoSysTask extends AsyncTask<Void, Void, ArrayList<InfoSysIte
     @Override
     protected void onPostExecute(ArrayList<InfoSysItem> items) {
         // fire 'processFinish' method in InfoSysFragment
-        delegate.processFinish(items);
+        if(this.isSwiperefresh){
+            delegate.processFinish(items, true);
+        }else{
+            delegate.processFinish(items);
+        }
     }
 
     public InfoSys getInfoSys() {

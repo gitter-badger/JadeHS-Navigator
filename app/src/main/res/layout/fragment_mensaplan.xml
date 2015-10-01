@@ -4,6 +4,28 @@
       android:layout_height="match_parent"
       android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:visibility="visible"
+        android:id="@+id/progressMensaplan"
+        android:focusable="false"
+        android:background="@color/jadehs_red">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:id="@+id/progressBar"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+    </RelativeLayout>
+
     <de.jadehs.jadehsnavigator.view.MensaplanTabLayout
           android:id="@+id/sliding_tabs"
           android:layout_width="match_parent"
@@ -33,6 +55,7 @@
 
     </RelativeLayout>
 
+    <!--
       <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
@@ -54,5 +77,5 @@
                 android:visibility="visible" />
 
       </RelativeLayout>
-
+    -->
 </LinearLayout>

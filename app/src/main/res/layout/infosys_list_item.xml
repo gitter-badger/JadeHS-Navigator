@@ -19,6 +19,7 @@
 
     <de.jadehs.jadehsnavigator.view.ExpandableTextView
         android:id="@+id/txtDescription"
+        android:autoLink="web|email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

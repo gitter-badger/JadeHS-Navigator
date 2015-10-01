@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /**
      * Version der Datenbank
      */
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     /**
      * Tables
@@ -45,6 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_MENSAPLANDAY = "mensaplanday";
     public static final String TABLE_MENSAPLANMEAL = "mensaplanmeal";
     public static final String TABLE_VPLANITEMS = "vplan";
+    public static final String TABLE_NEWS = "newsitems";
 
     /**
      * Columns
@@ -70,8 +71,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_FOOD_ADDITIVES = "additives";
     public static final String COLUMN_DAYID = "dayid";
 
-
-
     // VPlan
     public static final String COLUMN_VPLAN_ID = "_id";
     public static final String COLUMN_VPLAN_START = "start";
@@ -82,11 +81,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_VPLAN_DAY_OF_WEEK = "weekday";
     public static final String COLUMN_VPLAN_STUDIENGANG_ID = "studiengangid";
     public static final String COLUMN_VPLAN_FB = "fb";
+
+
+    // News
+    public static final String COLUMN_ORIGIN = "origin";
+
     /**
      * SQL für die Erstellung der Tabellen
      */
     // InfoSys
-    private static final String DATABASE_INFOSYSITEMS = "create table " + TABLE_INFOSYSITEMS + " (" + COLUMN_ID + " integer primary key autoincrement, "
+    private static final String DATABASE_INFOSYSITEMS = "create table if not exists " + TABLE_INFOSYSITEMS + "  (" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_TITLE + " text not null, "
             + COLUMN_DESCRIPTION + " text not null, "
             + COLUMN_LINK + " text not null, "
@@ -94,14 +98,14 @@ public class DBHelper extends SQLiteOpenHelper {
             + COLUMN_CREATED + " text not null, "
             + COLUMN_FB + " integer not null);";
 
-    private static final String DATABASE_MENSAPLANDAY = "create table " + TABLE_MENSAPLANDAY + " (" + COLUMN_ID + " integer  primary key autoincrement, "
+    private static final String DATABASE_MENSAPLANDAY = "create table if not exists " + TABLE_MENSAPLANDAY + "  (" + COLUMN_ID + " integer  primary key autoincrement, "
             + COLUMN_DAY + " integer, "
             + COLUMN_WEEKNUMBER + " integer,"
             + COLUMN_WEEK + " integer , "
             + COLUMN_LOCATION + " text,"
             + COLUMN_CREATED + " text );";
 
-    private static final String DATABASE_MENSAPLANMEAL = "create table " + TABLE_MENSAPLANMEAL + " (" + COLUMN_ID + " integer primary key autoincrement, "
+    private static final String DATABASE_MENSAPLANMEAL = "create table if not exists " + TABLE_MENSAPLANMEAL + " (" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_TYPE + " integer , "
             + COLUMN_DESCRIPTION + " text ,"
             + COLUMN_PRICE + " text , "
@@ -109,7 +113,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + COLUMN_DAYID + " integer);";
 
     // VPlan
-    private static final String DATABASE_VPLANITEMS = "create table " + TABLE_VPLANITEMS + " (" + COLUMN_VPLAN_ID + " integer primary key autoincrement, "
+    private static final String DATABASE_VPLANITEMS = "create table if not exists " + TABLE_VPLANITEMS + " (" + COLUMN_VPLAN_ID + " integer primary key autoincrement, "
             + COLUMN_VPLAN_TITLE + " text not null, "
             + COLUMN_VPLAN_PROF + " text not null, "
             + COLUMN_VPLAN_ROOM + " text not null, "
@@ -119,6 +123,15 @@ public class DBHelper extends SQLiteOpenHelper {
             + COLUMN_VPLAN_STUDIENGANG_ID + " text not null, "
             + COLUMN_VPLAN_FB + " text not null);";
 
+    // News
+    // rssItem = new RSSItem(title, description, link, origin, dateStr);
+    private static final String DATABASE_NEWSITEMS = "create table if not exists " + TABLE_NEWS + " (" + COLUMN_ID + " integer primary key autoincrement, "
+            + COLUMN_TITLE + " text not null, "
+            + COLUMN_DESCRIPTION + " text not null, "
+            + COLUMN_LINK + " text not null, "
+            + COLUMN_ORIGIN + " text not null, "
+            + COLUMN_CREATED + " text not null);";
+
     public DBHelper(Context context){
         super(context, DATEBASE_NAME, null, DATABASE_VERSION);
 
@@ -127,25 +140,38 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.wtf("DBHelper", "Creating database for the first time");
         db.execSQL(DATABASE_INFOSYSITEMS);
         db.execSQL(DATABASE_MENSAPLANDAY);
         db.execSQL(DATABASE_MENSAPLANMEAL);
         db.execSQL(DATABASE_VPLANITEMS);
+        // added in version 2
+        db.execSQL(DATABASE_NEWSITEMS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // @todo: upgrade db, delete old data
-        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_INFOSYS);
-        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_VPLAN);
-        // etc..
+        Log.wtf("DBHelper", String.format("Upgrading database from %d to %d", oldVersion, newVersion));
+
+        switch(newVersion){
+            case 2:
+                Log.wtf("DBHelper", "Upgrade to second version. Adding 'newsitem' table. Reset infosys table");
+                reset();
+                break;
+            case 3:
+                Log.wtf("DBHelper", "Upgrade to third version. Reset all tables");
+                reset();
+                break;
+            default:
+                Log.wtf("DBHelper", "Couldn't upgrade");
+        }
     }
 
     public void reset(){
         if (this.context.deleteDatabase(DATEBASE_NAME)) {
-            Log.d("DB", "deleteDatabase(): database deleted.");
+            Log.wtf("DB", "deleteDatabase(): database deleted.");
         } else {
-            Log.d("DB", "deleteDatabase(): database NOT deleted.");
+            Log.wtf("DB", "deleteDatabase(): database NOT deleted.");
         }
     }
 

@@ -98,17 +98,20 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
 
             Log.i("STUDIENGANG", studiengangID);
 
+            setCurrentWeekNumber();
+
             if (studiengangID.startsWith("%")) {
                 //this.weekOfYear = new SimpleDateFormat("w").format(new java.util.Date()).toString();
                 //this.weekOfYear = calendarHelper.getWeekNumber();
-                setCurrentWeekNumber();
+                //setCurrentWeekNumber();
                 // LADE AKTUELLEN VPLAN
                 updateVPlan();
                 //getVPlanFromDB();
             } else {
-                Toast.makeText(getActivity().getApplicationContext(), "Bitte wähle einen Studiengang in den Einstellungen aus!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity().getApplicationContext(), "Bitte wähle einen Studiengang in den Einstellungen aus!", Toast.LENGTH_LONG).show();
                 // zeige fehler overlay
-                getActivity().findViewById(R.id.errorOverlay).setVisibility(View.VISIBLE);
+                getActivity().findViewById(R.id.progressVPlan).setVisibility(View.GONE);
+                getActivity().findViewById(R.id.empty_sg).setVisibility(View.VISIBLE);
             }
         }catch (Exception ex){
             Log.wtf("VPlan", "Err", ex);
@@ -143,15 +146,17 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //setWeekOfYear(strings[which]);
-                        setCurrentWeekNumber(which + 1);
-                        updateVPlan();
+                        if (studiengangID.startsWith("%")) {
+                            setCurrentWeekNumber(which + 1);
+                            updateVPlan();
+                        }
                         dialog.dismiss();
                     }
                 }).create();
 
                 builder.show();
                 break;
-
+            /*
             case R.id.show_semester:
                 getActivity().findViewById(R.id.vplan_semester).setVisibility(View.VISIBLE);
                 /*int currentWeek = Integer.parseInt(new SimpleDateFormat("w").format(new java.util.Date()));
@@ -160,9 +165,9 @@ public class VorlesungsplanFragment extends Fragment implements VPlanAsyncRespon
                 else
                     this.weekOfYear = "34-52";
                 updateVPlan();
-                setCurrentWeekNumber();*/
+                setCurrentWeekNumber();
                 break;
-
+            */
             case R.id.refresh_vplan:
                 updateVPlan();
         }

@@ -20,31 +20,31 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import de.jadehs.jadehsnavigator.model.InfoSysItem;
+import de.jadehs.jadehsnavigator.model.RSSItem;
+import de.jadehs.jadehsnavigator.model.RSSOrigin;
 
 /**
  * Created by re1015 on 22.07.2015.
  */
-public class InfoSysItemDataSource {
-    private static final String TAG = "INFOSYSITEMDATASOURCE";
+public class NewsItemDataSource {
+    private static final String TAG = "NewsItemDataSource";
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;
     private String[] allColumns = {dbHelper.COLUMN_ID,
                                    dbHelper.COLUMN_TITLE, dbHelper.COLUMN_DESCRIPTION,
-                                   dbHelper.COLUMN_LINK, dbHelper.COLUMN_CREATOR,
-                                   dbHelper.COLUMN_CREATED, dbHelper.COLUMN_FB};
+                                   dbHelper.COLUMN_LINK, dbHelper.COLUMN_ORIGIN,
+                                   dbHelper.COLUMN_CREATED};
 
-    public final String DB_TABLE = dbHelper.TABLE_INFOSYSITEMS;
+    public final String DB_TABLE = dbHelper.TABLE_NEWS;
 
-    public InfoSysItemDataSource(Context context){
+    public NewsItemDataSource(Context context){
         dbHelper = new DBHelper(context);
     }
 
@@ -56,66 +56,62 @@ public class InfoSysItemDataSource {
         dbHelper.close();
     }
 
-    public void createInfoSysItem(InfoSysItem infoSysItem){
+    public void createNewsItem(RSSItem rssItem){
         try{
             ContentValues values = new ContentValues();
             /* Sets values */
-            values.put(dbHelper.COLUMN_TITLE, infoSysItem.getTitle());
-            values.put(dbHelper.COLUMN_DESCRIPTION, infoSysItem.getDescription());
-            values.put(dbHelper.COLUMN_LINK, infoSysItem.getLink());
-            values.put(dbHelper.COLUMN_CREATOR, infoSysItem.getCreator());
-            values.put(dbHelper.COLUMN_CREATED, infoSysItem.getCreated());
-            values.put(dbHelper.COLUMN_FB, infoSysItem.getFB());
+            values.put(dbHelper.COLUMN_TITLE, rssItem.getTitle());
+            values.put(dbHelper.COLUMN_DESCRIPTION, rssItem.getDescription());
+            values.put(dbHelper.COLUMN_LINK, rssItem.getLink());
+            values.put(dbHelper.COLUMN_ORIGIN, rssItem.getOrigin().getTitle());
+            values.put(dbHelper.COLUMN_CREATED, rssItem.getCreated());
 
-            this.database.insert(dbHelper.TABLE_INFOSYSITEMS, null, values);
+            this.database.insert(DB_TABLE, null, values);
             Log.wtf(TAG, "Created item in DB!");
         }catch (Exception ex){
             Log.wtf(TAG, "Couldn't create item!", ex);
         }
     }
 
+    /*
     public void deleteInfoSysItem(InfoSysItem infoSysItem){
         long id = infoSysItem.getID();
         // @todo: debug-msg löschen
         //System.out.println("DEBUG: Deleted InfoSysItem: " + id);
-        this.database.delete(dbHelper.TABLE_INFOSYSITEMS, dbHelper.COLUMN_ID + " = " + id, null);
+        this.database.delete(DB_TABLE, dbHelper.COLUMN_ID + " = " + id, null);
     }
+    */
 
-    public ArrayList<InfoSysItem> getAllInfoSysItems(){
-        ArrayList<InfoSysItem> infoSysItems = new ArrayList<InfoSysItem>();
+    public ArrayList<RSSItem> getAllRSSItems(){
+        ArrayList<RSSItem> rssItems = new ArrayList<RSSItem>();
 
-        Cursor cursor = database.query(dbHelper.TABLE_INFOSYSITEMS, allColumns, null, null, null, null, null);
+        Cursor cursor = database.query(DB_TABLE, allColumns, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            InfoSysItem infoSysItem = cursorToInfoSysItem(cursor);
-            infoSysItems.add(infoSysItem);
+            RSSItem rssItem = cursorToRSSItem(cursor);
+            rssItems.add(rssItem);
             cursor.moveToNext();
         }
         cursor.close();
 
-        return infoSysItems;
+        return rssItems;
     }
 
-    public ArrayList<InfoSysItem>  getInfoSysItemsFromFB(int fb){
-        ArrayList<InfoSysItem> infoSysItems = new ArrayList<InfoSysItem>();
+    public ArrayList<RSSItem>  getRSSItemsFromOrigin(String origin){
+        ArrayList<RSSItem> rssItems = new ArrayList<RSSItem>();
 
-        Cursor cursor = database.query(dbHelper.TABLE_INFOSYSITEMS, allColumns, null, null, null, null, null);
+        Cursor cursor = database.query(DB_TABLE, allColumns, null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            InfoSysItem infoSysItem = cursorToInfoSysItem(cursor);
-            // @todo: automatically remove old entries (1-2 months) or "tap to load all" entries button ...
-            // ---
-            // ---
-            if(infoSysItem.getFB() == fb) {
-                infoSysItems.add(infoSysItem);
+            RSSItem rssItem = cursorToRSSItem(cursor);
+            if(rssItem.getOrigin().getTitle().equals(origin)){
+                rssItems.add(rssItem);
             }
             cursor.moveToNext();
         }
         cursor.close();
 
-
-
-        return infoSysItems;
+        return rssItems;
     }
 
     public boolean exists(String fieldName, String fieldValue) {
@@ -130,7 +126,8 @@ public class InfoSysItemDataSource {
         return true;
     }
 
-    public InfoSysItem loadInfoSysItemByTitle(String title){
+
+    public RSSItem loadRSSItemByTitle(String title){
         String Query = "Select * from " + this.DB_TABLE + " where " + dbHelper.COLUMN_TITLE + " = '" + title + "'";
         Cursor cursor = this.database.rawQuery(Query, null);
         cursor.moveToFirst();
@@ -138,9 +135,21 @@ public class InfoSysItemDataSource {
             cursor.toString();
         }
 
-        return cursorToInfoSysItem(cursor);
+        return cursorToRSSItem(cursor);
     }
 
+    public RSSItem loadRSSItemByURL(String link){
+        String Query = "Select * from " + this.DB_TABLE + " where " + dbHelper.COLUMN_LINK + " = '" + link + "'";
+        Cursor cursor = this.database.rawQuery(Query, null);
+        cursor.moveToFirst();
+        if(cursor.getCount() <= 0){
+            cursor.toString();
+        }
+
+        return cursorToRSSItem(cursor);
+    }
+
+    /*
     public InfoSysItem loadInfoSysItemByURL(String url){
         String Query = "Select * from " + this.DB_TABLE + " where " + dbHelper.COLUMN_LINK + " = '" + url + "'";
         Cursor cursor = this.database.rawQuery(Query, null);
@@ -149,8 +158,9 @@ public class InfoSysItemDataSource {
             cursor.toString();
         }
 
-        return cursorToInfoSysItem(cursor);
+        return cursorToRSSItem(cursor);
     }
+    */
 
     /**
      * Creates a InfoSysItem from the given database cursor
@@ -158,20 +168,20 @@ public class InfoSysItemDataSource {
      * @param cursor Database cursor
      * @return InfoSysItem Created Item
      */
-    private InfoSysItem cursorToInfoSysItem(Cursor cursor){
-        InfoSysItem infoSysItem = new InfoSysItem();
+    private RSSItem cursorToRSSItem(Cursor cursor){
+        RSSItem rssItem = new RSSItem();
         try {
-            infoSysItem.setID(cursor.getLong(0));
-            infoSysItem.setTitle(cursor.getString(1));
-            infoSysItem.setDescription(cursor.getString(2));
-            infoSysItem.setLink(cursor.getString(3));
-            infoSysItem.setCreator(cursor.getString(4));
-            infoSysItem.setCreated(cursor.getString(5));
-            infoSysItem.setFB(cursor.getInt(6));
+            rssItem.setID(cursor.getLong(0));
+            rssItem.setTitle(cursor.getString(1));
+            rssItem.setDescription(cursor.getString(2));
+            rssItem.setLink(cursor.getString(3));
+            // ehhhh
+            rssItem.setOrigin(new RSSOrigin(0,cursor.getString(4),null));
+            rssItem.setCreated(cursor.getString(5));
         }catch (Exception ex){
             Log.wtf(TAG, "Err", ex);
         }
 
-        return  infoSysItem;
+        return  rssItem;
     }
 }

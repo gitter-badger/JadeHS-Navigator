@@ -5,21 +5,22 @@
     <item
         android:id="@+id/refresh_vplan"
         android:orderInCategory="1"
-        android:title="Aktualisieren"
-        android:icon="@android:drawable/stat_notify_sync"
-        app:showAsAction="ifRoom" />
+        android:title="@string/action_refresh"
+        android:icon="@android:drawable/stat_notify_sync" />
+        <!--app:showAsAction="ifRoom"-->
 
     <item
         android:id="@+id/change_kw_vplan"
-        android:title="Kalenderwoche"
+        android:title="@string/action_kw"
         android:orderInCategory="2"
         android:icon="@android:drawable/ic_menu_today"
         app:showAsAction="ifRoom" />
-
+    <!--
     <item
         android:id="@+id/show_semester"
         android:title="Semester"
         android:orderInCategory="3"
         app:showAsAction="never" />
+     -->
 
 </menu>

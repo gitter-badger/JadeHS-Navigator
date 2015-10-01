@@ -22,4 +22,5 @@ import de.jadehs.jadehsnavigator.model.InfoSysItem;
 
 public interface InfoSysAsyncResponse {
     void processFinish(ArrayList<InfoSysItem> items);
+    void processFinish(ArrayList<InfoSysItem> items, boolean isSwipeRefresh);
 }

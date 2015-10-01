@@ -31,14 +31,20 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import de.jadehs.jadehsnavigator.R;
 import de.jadehs.jadehsnavigator.model.RSSItem;
 
 public class NewsAdapter extends BaseAdapter {
-    private static final String TAG = "NEWSADAPTER";
+    private static final String TAG = "NewsAdapter";
 
+    private Date date;
+    Calendar cal = Calendar.getInstance();
     private Context context;
     private ArrayList<RSSItem> rssItems;
 
@@ -72,10 +78,23 @@ public class NewsAdapter extends BaseAdapter {
 
         /* Set all texts for a single item */
         TextView title = (TextView) convertView.findViewById(R.id.txtTitle);
-        TextView date = (TextView) convertView.findViewById(R.id.txtDate);
+        TextView txtDate = (TextView) convertView.findViewById(R.id.txtDate);
+
+        String timestamp = this.rssItems.get(position).getCreated();
+        String dateStr = "";
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        try {
+            date = sdf2.parse(timestamp);
+            cal.setTime(date);
+
+            dateStr = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH) + 1) + "." + cal.get(Calendar.YEAR) + "   " +
+                    String.format("%02d", cal.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", cal.get(Calendar.MINUTE)) + " Uhr";
+        }catch (Exception ex){
+            Log.wtf(TAG, "Err", ex);
+        }
 
         title.setText(this.rssItems.get(position).getTitle());
-        date.setText(this.rssItems.get(position).getCreated());
+        txtDate.setText(dateStr);
 
         convertView.setOnClickListener(new RSSOnClickListener(this.rssItems.get(position)));
 

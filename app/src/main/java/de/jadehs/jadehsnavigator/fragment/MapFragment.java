@@ -32,13 +32,16 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import de.jadehs.jadehsnavigator.R;
+import de.jadehs.jadehsnavigator.util.Preferences;
 import it.sephiroth.android.library.imagezoom.ImageViewTouch;
 
 /**
  * Created by re1015 on 18.08.2015.
  */
 public class MapFragment extends Fragment {
-    final String TAG = "MAPFRAGMENT";
+    final String TAG = "MapFragment";
+
+    private Preferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,8 +59,11 @@ public class MapFragment extends Fragment {
             // Set start zoom state
             matrix.postScale((float)2,(float)2);
 
-            //@todo: Basierend auf preferences (location) korrekten plan anzeigen (und in besserer quali)
-            Toast.makeText(getActivity(),"Pläne für Oldenburg und Elsfleth sind in Arbeit und werden nachgereicht",Toast.LENGTH_LONG).show();
+            this.preferences = new Preferences(getActivity());
+            if(!this.preferences.getLocation().equals(getActivity().getString(R.string.bez_WHV))) {
+                Toast.makeText(getActivity(), "Pläne für Oldenburg und Elsfleth sind in Arbeit und werden nachgereicht", Toast.LENGTH_LONG).show();
+            }
+
             Bitmap bitmap = getBitmapFromAsset("images/plan_whv.png");
             mapImage.setImageBitmap(bitmap, matrix, 1, 3);
         }catch (Exception ex){

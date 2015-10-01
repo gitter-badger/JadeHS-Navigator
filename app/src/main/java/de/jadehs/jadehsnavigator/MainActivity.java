@@ -46,6 +46,7 @@ import de.jadehs.jadehsnavigator.adapter.NavDrawerListAdapter;
 import de.jadehs.jadehsnavigator.fragment.AboutFragment;
 import de.jadehs.jadehsnavigator.fragment.HomeFragment;
 import de.jadehs.jadehsnavigator.fragment.InfoSysFragment;
+import de.jadehs.jadehsnavigator.fragment.MapFragment;
 import de.jadehs.jadehsnavigator.fragment.MensaplanFragment;
 import de.jadehs.jadehsnavigator.fragment.NewsFragment;
 import de.jadehs.jadehsnavigator.fragment.VorlesungsplanFragment;
@@ -227,29 +228,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayView(int position) {
-        // Fragment anzeigen
+        // show fragment
         Fragment fragment = null;
+        String fragmentTag = "";
         switch (position) {
             case 0:
                 fragment = new HomeFragment();
+                fragmentTag = navMenuTitles[0];
                 break;
             case 1:
                 fragment = new NewsFragment();
+                fragmentTag = navMenuTitles[1];
                 break;
             case 2:
                 fragment = new InfoSysFragment();
+                fragmentTag = navMenuTitles[2];
                 break;
             case 3:
                 fragment = new VorlesungsplanFragment();
+                fragmentTag = navMenuTitles[3];
                 break;
             case 4:
                 fragment = new MensaplanFragment();
+                fragmentTag = navMenuTitles[4];
                 break;
             case 5:
-                fragment = new de.jadehs.jadehsnavigator.fragment.MapFragment();
+                fragment = new MapFragment();
+                fragmentTag = navMenuTitles[5];
                 break;
             case 6:
                 fragment = new AboutFragment();
+                fragmentTag = navMenuTitles[6];
                 break;
             case 7:
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -259,19 +268,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         if (fragment != null) {
-            //FragmentManager fragmentManager =  getSupportFragmentManager();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment)
-                    .addToBackStack(null)
+                    .replace(R.id.frame_container, fragment, fragmentTag)
+                    .addToBackStack(fragment.getTag())
                     .commit();
             mDrawerLayout.closeDrawer(mDrawerList);
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
             setTitle(navMenuTitles[position]);
-            //mDrawerLayout.closeDrawer(mDrawerList);
         } else {
-            Log.e("MainActivity", "Error while creating fragment");
+            Log.e(TAG, "Error while creating fragment");
         }
     }
 
@@ -283,17 +290,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        /*
-        * @todo: in backstacking einlesen
         FragmentManager fragmentManager = getFragmentManager();
-        if(fragmentManager.getBackStackEntryCount() > 0){
-            Log.wtf("FragmentMngr", "popping backstack");
+        if (fragmentManager.getBackStackEntryCount() > 1) {
+            // jump to previous fragment
+            fragmentManager.popBackStackImmediate();
+            FragmentManager.BackStackEntry entry = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1);
+            setTitle(entry.getName());
         }else{
-            Log.wtf("FragmentMngr", "nothing to pop");
+            // quit the app
             super.onBackPressed();
         }
-        */
     }
 
     @Override
