@@ -14,15 +14,20 @@ Natürlich sind auch unabhängige Änderungen per GitHub erwünscht und erlaubt!
 
 ## Install
 
-1. Forke das Repo
-2. <code>git clone</code> oder lade dir die entsprechende zip-Datei von deinem Fork herunter
-3. In Android Studio: File > New > Import Project..
+1. <code>git clone</code> oder lade dir die entsprechende zip-Datei herunter
+2. In Android Studio: File > New > Import Project..
 
 ## Contribute
 
-Commite auf deinem Fork und stell eine [Pull Request](https://github.com/Ekrow/JadeHS-Navigator/pulls) auf den DEV-branch
+Wenn du das JadeHS-Navigator Projekt unterstützen möchtest, gehe bitte folgende Schritte durch: 
+
+1. Forke das Projekt
+2. Erstelle deinen "Feature/Patch Branch" <code>git checkout -b mein-patch</code>
+3. Committe deine Veränderungen <code>git commit -am 'Fix some stuff'</code>
+4. Pushe zum Branch <code>git push origin mein-patch</code>
+5. Stelle eine [Pull Request](https://github.com/Ekrow/JadeHS-Navigator/pulls) auf den DEV-branch
 
 ## License
 
-Der JadeHS-Navigator steht unter der  GNU LESSER GENERAL PUBLIC LICENSE v3; mehr dazu in LICENSE
+Der JadeHS-Navigator steht unter der  GNU LESSER GENERAL PUBLIC LICENSE v3 mehr dazu in LICENSE
 
